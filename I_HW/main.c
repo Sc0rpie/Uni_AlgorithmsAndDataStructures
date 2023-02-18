@@ -12,14 +12,12 @@ void waitForInput()
     while( getchar() != '\n' );
 }
 
-int checkID(int idToCheck, int deckCounter, Deck **deck)
+int askForData()
 {
-    for (int i = 0; i < deckCounter; i++)
-    {
-        if (deck[i]->id == idToCheck)
-            return 0;
-    }
-    return -1;
+    printf("Enter data to push: ");
+    int data;
+    scanf("%d", &data);
+    return data;
 }
 
 int askForDeck(int deckCounter, Deck **deck)
@@ -32,11 +30,15 @@ int askForDeck(int deckCounter, Deck **deck)
     }
     printf("Enter deck ID: ");
     scanf("%d", &idToCheck);
-    return checkID(idToCheck, deckCounter, deck);
+    if (checkID(idToCheck, deckCounter, deck) == 0)
+        return idToCheck;
+    else
+        return -1;
 }
 
 Deck **addToArray(Deck **ptr_array, Deck *ptr, int *elementCount)
 {
+    printf("Element count in func: %d\n", *elementCount);
     if (ptr_array == NULL)
     {
         ptr_array = (Deck **) malloc(sizeof(Deck *));
@@ -45,9 +47,9 @@ Deck **addToArray(Deck **ptr_array, Deck *ptr, int *elementCount)
     }
     else
     {
+        *elementCount = *elementCount + 1;
         ptr_array = (Deck **) realloc(ptr_array, sizeof(Deck *) * (*elementCount));
         ptr_array[*elementCount-1] = ptr;
-        *elementCount = *elementCount + 1;
     }
     return ptr_array;
 }
@@ -58,7 +60,8 @@ void menu()
     int choice;
     int idCount = 0; // deck id counter
     int deckCounter = 0; // deck counter
-    Deck **deck = NULL; // array of decks
+    Deck **deck_arr = NULL; // array of decks
+    Deck *dq;
     int idToCheck, dataToPush;
     while(showMenu)
     {
@@ -73,106 +76,141 @@ void menu()
         printf("8. Print deck\n");
         printf("9. Destroy deck\n");
         printf("0. Exit\n");
+        printf("Deck Counter: %d\n", deckCounter);
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
         switch(choice)
         {
             case 1:
+                dq = createDeck(idCount);
+                idCount++;
+                deck_arr = addToArray(deck_arr, dq, &deckCounter);
+                // deckCounter++;
                 // printf("DeckCntr: %d | idCount: %d\n", deckCounter, idCount);
                 // deck = deckInit(&deckCounter, &idCount);
-                if(deckCounter == 0)
-                {
-                    deckCounter++;
-                    idCount++;
-                    deck = malloc(sizeof(Deck *) * deckCounter);
-                    if (deck == NULL)
-                    {
-                        printf("Error allocating memory");
-                        exit(1);
-                    }
-                }
-                else
-                {
-                    deckCounter++;
-                    idCount++;
-                    deck = realloc(deck, sizeof(Deck *) * deckCounter);
-                    if (deck == NULL)
-                    {
-                        printf("Error allocating memory");
-                        exit(1);
-                    }
-                }
+                // if(deckCounter == 0)
+                // {
+                //     deckCounter++;
+                //     idCount++;
+                //     deck = malloc(sizeof(Deck *) * deckCounter);
+                //     if (deck == NULL)
+                //     {
+                //         printf("Error allocating memory");
+                //         exit(1);
+                //     }
+                // }
+                // else
+                // {
+                //     deckCounter++;
+                //     idCount++;
+                //     deck = realloc(deck, sizeof(Deck *) * deckCounter);
+                //     if (deck == NULL)
+                //     {
+                //         printf("Error allocating memory");
+                //         exit(1);
+                //     }
+                // }
                 // printf("FUNC\n");
-                waitForInput();
-                deck[idCount-1] = createDeck(deckCounter);
+                // deck[idCount-1] = createDeck(deckCounter);
                 system("clear");
-                printf("Deck created with id: %d\n", deckCounter);
+                printf("Deck created with id: %d\n", idCount-1);
                 waitForInput();
                 break;
             case 2:
-                printf("Available deck ID's: ");
-                for (int i = 0; i < deckCounter; i++)
-                {
-                    printf("%d ", deck[i]->id);
-                }
-                printf("\n");
-                printf("Enter deck ID: ");
-                scanf("%d", &idToCheck);
+                askForDeck(deckCounter, deck_arr);
                 
                 break;
             case 3:
                 printf("Available deck ID's: ");
                 for (int i = 0; i < deckCounter; i++)
                 {
-                    printf("%d ", deck[i]->id);
+                    printf("%d ", deck_arr[i]->id);
                 }
                 printf("\n");
                 printf("Enter deck ID: ");
                 scanf("%d", &idToCheck);
-                print(deck[idToCheck-1]->head);
+                print(deck_arr[idToCheck]->head);
                 waitForInput();
                 break;
             case 4:
-                printf("Available deck ID's: ");
-                for (int i = 0; i < deckCounter; i++)
+                idToCheck = askForDeck(deckCounter, deck_arr);
+                if (idToCheck != -1)
                 {
-                    printf("%d ", deck[i]->id);
+                    dataToPush = askForData();
+                    pushFront(deck_arr[idToCheck], dataToPush);
                 }
-                printf("\n");
-                printf("Enter deck ID: ");
-                scanf("%d", &idToCheck);
-                printf("Enter data to push: ");
-                scanf("%d", &dataToPush);
-                pushFront(deck[idToCheck-1], dataToPush);
+                else
+                {
+                    printf("Incorrect ID.");
+                    waitForInput();
+                }
+
+                // printf("Available deck ID's: ");
+                // for (int i = 0; i < deckCounter; i++)
+                // {
+                //     printf("%d ", deck_arr[i]->id);
+                // }
+                // printf("\n");
+                // printf("Enter deck ID: ");
+                // scanf("%d", &idToCheck);
+                // printf("Enter data to push: ");
+                // scanf("%d", &dataToPush);
+                // pushFront(deck_arr[idToCheck-1], dataToPush);
                 break;
             case 5:
                 printf("Available deck ID's: ");
                 for (int i = 0; i < deckCounter; i++)
                 {
-                    printf("%d ", deck[i]->id);
+                    printf("%d ", deck_arr[i]->id);
                 }
                 printf("\n");
                 printf("Enter deck ID: ");
                 scanf("%d", &idToCheck);
                 printf("Enter data to push: ");
                 scanf("%d", &dataToPush);
-                pushBack(deck[idToCheck-1], dataToPush);
+                pushBack(deck_arr[idToCheck-1], dataToPush);
                 break;
             case 6:
-                printf("Available deck ID's: ");
-                for (int i = 0; i < deckCounter; i++)
+                idToCheck = askForDeck(deckCounter, deck_arr);
+                if (idToCheck != -1)
                 {
-                    printf("%d ", deck[i]->id);
+                    int pop;
+                    popFront(deck_arr[idToCheck], &pop);
+                    waitForInput();
                 }
-                printf("\n");
-                printf("Enter deck ID: ");
-                scanf("%d", &idToCheck);
-                printf("Enter data to push: ");
-                scanf("%d", &dataToPush);
-                int num = popFront(deck[idToCheck-1]);
-                printf("Popped number: %d", num);
-                waitForInput();
+                else
+                {
+                    printf("Incorrect ID!\n");
+                    waitForInput();
+                }
+                // printf("Available deck ID's: ");
+                // for (int i = 0; i < deckCounter; i++)
+                // {
+                //     printf("%d ", deck_arr[i]->id);
+                // }
+                // printf("\n");
+                // printf("Enter deck ID: ");
+                // scanf("%d", &idToCheck);
+                // printf("Enter data to push: ");
+                // scanf("%d", &dataToPush);
+                // int num = popFront(deck_arr[idToCheck-1]);
+                // printf("Popped number: %d", num);
+                // waitForInput();
+                break;
+            case 7:
+                idToCheck = askForDeck(deckCounter, deck_arr);
+                if (idToCheck != -1)
+                {
+                    int pop;
+                    popBack(deck_arr[idToCheck], &pop);
+                    waitForInput();
+                }
+                else
+                {
+                    printf("Incorrect ID!\n");
+                    waitForInput();
+                }
                 break;
             case 8:
                 showMenu = false;
@@ -185,16 +223,20 @@ void menu()
 
 int main()
 {   
-    // menu();
-    int elements = 0;
-    Deck *dq = createDeck(0);
-    pushFront(dq, 5);
-    pushFront(dq, 25);
-    Deck **ptr_arr = NULL;
-    ptr_arr = addToArray(ptr_arr, dq, &elements);
-    ptr_arr = addToArray(ptr_arr, dq, &elements);
-    printf("Elements: %d\n", elements);
-    print(ptr_arr[0]->head);
+    menu();
+    // int elements = 0;
+    // Deck *dq = createDeck(0);
+    // Deck *dqq = createDeck(1);
+    // pushFront(dq, 5);
+    // pushFront(dq, 25);
+    // pushFront(dqq, 12);
+    // pushFront(dqq, 14);
+    // Deck **ptr_arr = NULL;
+    // ptr_arr = addToArray(ptr_arr, dq, &elements);
+    // ptr_arr = addToArray(ptr_arr, dqq, &elements);
+    // printf("Elements: %d\n", elements);
+    // print(ptr_arr[0]->head);
+    // print(ptr_arr[1]->head);
     return 0;
 }
 
