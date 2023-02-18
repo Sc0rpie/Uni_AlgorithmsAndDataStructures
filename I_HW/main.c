@@ -22,6 +22,9 @@ int askForData()
 
 int askForDeck(int deckCounter, Deck **deck)
 {
+    if (deckCounter == 0)
+        return -2;
+        
     int idToCheck;
     printf("Available deck ID's: ");
     for (int i = 0; i < deckCounter; i++)
@@ -118,8 +121,21 @@ void menu()
                 waitForInput();
                 break;
             case 2:
-                askForDeck(deckCounter, deck_arr);
-                
+                idToCheck = askForDeck(deckCounter, deck_arr);
+                if (idToCheck == -2)
+                    printf("No decks available\n");
+                else if (idToCheck != -1)
+                {
+                    if (checkEmpty(deck_arr[idToCheck]) == 0)
+                        printf("Deck is empty.\n");
+                    else
+                        printf("Deck is not empty.\n");
+                }
+                else
+                {
+                    printf("Incorrect ID.");
+                }
+                waitForInput();
                 break;
             case 3:
                 printf("Available deck ID's: ");
