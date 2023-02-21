@@ -42,10 +42,15 @@ int checkFull(Deck *d)
 }
 
 void print(Node *n) /* Sąrašo rašymas į konsolę */
-{
+{   
+    if (n == NULL)
+    {
+        printf("Deck is empty!\n");
+        return;
+    }
     while (n != NULL)
     {
-        printf(" %d ", n->data);
+        printf("%d ", n->data);
         n = n->next;
     }
     printf("\n");
@@ -114,4 +119,38 @@ void popBack(Deck *d, int *value)
         d->tail->next = NULL;
     free(temp);
     printf("Value popped: %d\n", *value);
+}
+
+void destroyDeck(Deck *d)
+{
+    Node *temp = d->head;
+    while (temp != NULL)
+    {
+        d->head = d->head->next;
+        free(temp);
+        temp = d->head;
+    }
+    free(d);
+}
+
+//remove deck element from array and reallocate memory
+Deck **removeDeckFromArr(Deck **deck, int *deckCounter, int id)
+{
+    int i = 0;
+    while (i < *deckCounter)
+    {
+        if (deck[i]->id == id)
+        {
+            destroyDeck(deck[i]);
+            for (int j = i; j < *deckCounter - 1; j++)
+            {
+                deck[j] = deck[j + 1];
+            }
+            *deckCounter -= 1;
+            deck = (Deck **)realloc(deck, *deckCounter * sizeof(Deck *));
+            return deck;
+        }
+        i++;
+    }
+    return deck;
 }

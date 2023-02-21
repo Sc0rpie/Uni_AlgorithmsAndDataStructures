@@ -22,21 +22,31 @@ int askForData()
 
 int askForDeck(int deckCounter, Deck **deck)
 {
-    if (deckCounter == 0)
+    if (deckCounter == 0 || deck == NULL)
         return -2;
-        
+
     int idToCheck;
     printf("Available deck ID's: ");
     for (int i = 0; i < deckCounter; i++)
     {
         printf("%d ", deck[i]->id);
     }
-    printf("Enter deck ID: ");
+    printf("\nEnter deck ID: ");
     scanf("%d", &idToCheck);
     if (checkID(idToCheck, deckCounter, deck) == 0)
         return idToCheck;
     else
         return -1;
+}
+
+int getPosition(Deck **deck, int deckCounter, int id)
+{
+    for (int i = 0; i < deckCounter; i++)
+    {
+        if (deck[i]->id == id)
+            return i;
+    }
+    return -1;
 }
 
 Deck **addToArray(Deck **ptr_array, Deck *ptr, int *elementCount)
@@ -65,13 +75,14 @@ void menu()
     int deckCounter = 0; // deck counter
     Deck **deck_arr = NULL; // array of decks
     Deck *dq;
-    int idToCheck, dataToPush;
+    int idToCheck, dataToPush, position, pop;
     while(showMenu)
     {
+        fflush(stdin);
         system("clear");
         printf("1. Create deck\n");
         printf("2. Check if deck is empty\n");
-        printf("3. Check if deck is full PRINT PRINT\n");
+        printf("3. Check if deck is full\n");
         printf("4. Push to front\n");
         printf("5. Push to back\n");
         printf("6. Pop from front\n");
@@ -79,7 +90,7 @@ void menu()
         printf("8. Print deck\n");
         printf("9. Destroy deck\n");
         printf("0. Exit\n");
-        printf("Deck Counter: %d\n", deckCounter);
+        // printf("Deck Counter: %d\n", deckCounter);
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
@@ -89,7 +100,6 @@ void menu()
                 dq = createDeck(idCount);
                 idCount++;
                 deck_arr = addToArray(deck_arr, dq, &deckCounter);
-                // deckCounter++;
                 // printf("DeckCntr: %d | idCount: %d\n", deckCounter, idCount);
                 // deck = deckInit(&deckCounter, &idCount);
                 // if(deckCounter == 0)
@@ -138,98 +148,118 @@ void menu()
                 waitForInput();
                 break;
             case 3:
-                printf("Available deck ID's: ");
-                for (int i = 0; i < deckCounter; i++)
-                {
-                    printf("%d ", deck_arr[i]->id);
-                }
-                printf("\n");
-                printf("Enter deck ID: ");
-                scanf("%d", &idToCheck);
-                print(deck_arr[idToCheck]->head);
-                waitForInput();
-                break;
-            case 4:
                 idToCheck = askForDeck(deckCounter, deck_arr);
-                if (idToCheck != -1)
+                if (idToCheck == -2)
+                    printf("No decks available\n");
+                else if (idToCheck != -1)
                 {
-                    dataToPush = askForData();
-                    pushFront(deck_arr[idToCheck], dataToPush);
+                    if (checkFull(deck_arr[idToCheck]) == 0)
+                        printf("Deck is full.\n");
+                    else
+                        printf("Deck is not full.\n");
                 }
                 else
                 {
                     printf("Incorrect ID.");
-                    waitForInput();
                 }
-
-                // printf("Available deck ID's: ");
-                // for (int i = 0; i < deckCounter; i++)
-                // {
-                //     printf("%d ", deck_arr[i]->id);
-                // }
-                // printf("\n");
-                // printf("Enter deck ID: ");
-                // scanf("%d", &idToCheck);
-                // printf("Enter data to push: ");
-                // scanf("%d", &dataToPush);
-                // pushFront(deck_arr[idToCheck-1], dataToPush);
+                waitForInput();
+                break;
+            case 4:
+                idToCheck = askForDeck(deckCounter, deck_arr);
+                if (idToCheck == -2)
+                    printf("No decks available\n");
+                else if (idToCheck != -1)
+                {
+                    dataToPush = askForData();
+                    position = getPosition(deck_arr, deckCounter, idToCheck);
+                    pushFront(deck_arr[position], dataToPush);
+                }
+                else
+                {
+                    printf("Incorrect ID.");
+                }
+                waitForInput();
                 break;
             case 5:
-                printf("Available deck ID's: ");
-                for (int i = 0; i < deckCounter; i++)
+                idToCheck = askForDeck(deckCounter, deck_arr);
+                if (idToCheck == -2)
+                    printf("No decks available\n");
+                else if (idToCheck != -1)
                 {
-                    printf("%d ", deck_arr[i]->id);
+                    dataToPush = askForData();
+                    position = getPosition(deck_arr, deckCounter, idToCheck);
+                    pushBack(deck_arr[position], dataToPush);
                 }
-                printf("\n");
-                printf("Enter deck ID: ");
-                scanf("%d", &idToCheck);
-                printf("Enter data to push: ");
-                scanf("%d", &dataToPush);
-                pushBack(deck_arr[idToCheck-1], dataToPush);
+                else
+                {
+                    printf("Incorrect ID.");
+                }
+                waitForInput();
                 break;
             case 6:
                 idToCheck = askForDeck(deckCounter, deck_arr);
-                if (idToCheck != -1)
+                if (idToCheck == -2)
+                    printf("No decks available\n");
+                else if (idToCheck != -1)
                 {
-                    int pop;
-                    popFront(deck_arr[idToCheck], &pop);
-                    waitForInput();
+                    position = getPosition(deck_arr, deckCounter, idToCheck);
+                    popFront(deck_arr[position], &pop);
+                    // waitForInput();
                 }
                 else
                 {
                     printf("Incorrect ID!\n");
-                    waitForInput();
+                    // waitForInput();
                 }
-                // printf("Available deck ID's: ");
-                // for (int i = 0; i < deckCounter; i++)
-                // {
-                //     printf("%d ", deck_arr[i]->id);
-                // }
-                // printf("\n");
-                // printf("Enter deck ID: ");
-                // scanf("%d", &idToCheck);
-                // printf("Enter data to push: ");
-                // scanf("%d", &dataToPush);
-                // int num = popFront(deck_arr[idToCheck-1]);
-                // printf("Popped number: %d", num);
-                // waitForInput();
+                waitForInput();
                 break;
             case 7:
                 idToCheck = askForDeck(deckCounter, deck_arr);
-                if (idToCheck != -1)
+                if (idToCheck == -2)
+                    printf("No decks available\n");
+                else if (idToCheck != -1)
                 {
                     int pop;
-                    popBack(deck_arr[idToCheck], &pop);
-                    waitForInput();
+                    position = getPosition(deck_arr, deckCounter, idToCheck);
+                    popBack(deck_arr[position], &pop);
+                    // waitForInput();
                 }
                 else
                 {
                     printf("Incorrect ID!\n");
-                    waitForInput();
+                    // waitForInput();
                 }
+                waitForInput();
                 break;
             case 8:
-                showMenu = false;
+                idToCheck = askForDeck(deckCounter, deck_arr);
+                if (idToCheck == -2)
+                    printf("No decks available\n");
+                else if (idToCheck != -1)
+                {
+                    position = getPosition(deck_arr, deckCounter, idToCheck);
+                    print(deck_arr[position]->head);
+                }
+                else
+                {
+                    printf("Incorrect ID.");
+                }
+                waitForInput();
+                break;
+            case 9:
+                idToCheck = askForDeck(deckCounter, deck_arr);
+                if (idToCheck == -2)
+                    printf("No decks available\n");
+                else if (idToCheck != -1)
+                {
+                    deck_arr = removeDeckFromArr(deck_arr, &deckCounter, idToCheck);
+                    printf("Deck with id %d has been removed!\n", idToCheck);
+                }
+                waitForInput();
+                break;
+            case 0:
+                printf("Exiting program...\n");
+                exit(0);
                 break;
             default:
                 printf("Invalid choice, try again");

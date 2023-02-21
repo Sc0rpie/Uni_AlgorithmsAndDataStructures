@@ -22,5 +22,7 @@ void pushFront(Deck *d, int n_data);
 void pushBack(Deck *d, int n_data);
 void popFront(Deck *d, int *value);
 void popBack(Deck *d, int *value);
+void destroyDeck(Deck *d);
+Deck **removeDeckFromArr(Deck **deck, int *deckCounter, int id);
 
 #endif // DECK_H
