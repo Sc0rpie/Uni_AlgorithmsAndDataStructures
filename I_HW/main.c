@@ -29,10 +29,11 @@ int askForDeck(int deckCounter, Deck **deck)
     printf("Prieinami deku ID: "); //Available deck ID's: 
     for (int i = 0; i < deckCounter; i++)
     {
-        printf("%d ", deck[i]->id);
+        printf("%d ", deck[i]->id+1);
     }
     printf("\nIveskite deko ID: "); //Enter deck ID: 
     scanf("%d", &idToCheck);
+    idToCheck--;
     if (checkID(idToCheck, deckCounter, deck) == 0)
         return idToCheck;
     else
