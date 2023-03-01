@@ -24,5 +24,8 @@ void popFront(Deck *d, int *value);
 void popBack(Deck *d, int *value);
 void destroyDeck(Deck *d);
 Deck **removeDeckFromArr(Deck **deck, int *deckCounter, int id);
+void peekFront(Deck *d, int *peek);
+void peekRear(Deck *d, int *peek);
+int elementCount(Deck *d);
 
 #endif // DECK_H

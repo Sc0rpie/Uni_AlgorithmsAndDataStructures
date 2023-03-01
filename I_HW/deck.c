@@ -18,7 +18,8 @@ Deck *createDeck(int id)
     Deck *d = (Deck *)malloc(sizeof(Deck));
     if (d == NULL)
     {
-        printf("Memory allocation error\n");
+        // printf("Atminties paskirstymo klaida\n");
+        printf("Klaida #1\n");
         return NULL;
     }
     d->id = id;
@@ -45,7 +46,8 @@ void print(Node *n) /* Sąrašo rašymas į konsolę */
 {   
     if (n == NULL)
     {
-        printf("Deck is empty!\n");
+        // printf("Dekas yra tuscias\n"); //Deck is empty!
+        printf("Klaida #4\n");
         return;
     }
     while (n != NULL)
@@ -88,7 +90,8 @@ void popFront(Deck *d, int *value)
 {
     if(checkEmpty(d) == 0)
     {
-        printf("Unable to pop. Deck is empty!\n");
+        // printf("Neimanoma isimti elementa. Dekas yra tuscias!\n"); //Unable to pop. Deck is empty!
+        printf("Klaida #5\n");
         return;
     }
     Node *temp = d->head;
@@ -100,14 +103,15 @@ void popFront(Deck *d, int *value)
         d->head->prev = NULL;
     free(temp);
     
-    printf("Value popped: %d\n", *value);
+    printf("Isimta reiksme: %d\n", *value); //Value popped: 
 }
 
 void popBack(Deck *d, int *value)
 {
     if(checkEmpty(d) == 0)
     {
-        printf("Unable to pop. Deck is empty!\n");
+        // printf("Neimanoma isimti elementa. Dekas yra tuscias!\n"); //Unable to pop. Deck is empty!
+        printf("Klaida #5\n");
         return;
     }
     Node *temp = d->tail;
@@ -118,7 +122,7 @@ void popBack(Deck *d, int *value)
     else
         d->tail->next = NULL;
     free(temp);
-    printf("Value popped: %d\n", *value);
+    printf("Isimta reiksme: %d\n", *value); //Value popped: 
 }
 
 void destroyDeck(Deck *d)
@@ -153,4 +157,38 @@ Deck **removeDeckFromArr(Deck **deck, int *deckCounter, int id)
         i++;
     }
     return deck;
+}
+
+void peekFront(Deck *d, int *peek)
+{
+    if(checkEmpty(d) == 0)
+    {
+        printf("Unable to peak. Deck is empty!\n");
+        return;
+    }
+    *peek = d->head->data;
+    printf("Peek: %d\n", *peek);
+}
+
+void peekRear(Deck *d, int *peek)
+{
+    if(checkEmpty(d) == 0)
+    {
+        printf("Unable to peak. Deck is empty!\n");
+        return;
+    }
+    *peek = d->tail->data;
+    printf("Peek: %d\n", *peek);
+}
+
+int elementCount(Deck *d)
+{
+    int count = 0;
+    Node *temp = d->head;
+    while (temp != NULL)
+    {
+        count++;
+        temp = temp->next;
+    }
+    return count;
 }

@@ -7,14 +7,14 @@
 
 void waitForInput()
 {
-    printf("Press any key to continue...");
+    printf("Paspauskite ENTER mygtuka..."); //Press ENTER to continue...
     fflush(stdin);
     while( getchar() != '\n' );
 }
 
 int askForData()
 {
-    printf("Enter data to push: ");
+    printf("Iveskite skaiciu: "); //Enter data to push: 
     int data;
     scanf("%d", &data);
     return data;
@@ -26,12 +26,12 @@ int askForDeck(int deckCounter, Deck **deck)
         return -2;
 
     int idToCheck;
-    printf("Available deck ID's: ");
+    printf("Prieinami deku ID: "); //Available deck ID's: 
     for (int i = 0; i < deckCounter; i++)
     {
         printf("%d ", deck[i]->id);
     }
-    printf("\nEnter deck ID: ");
+    printf("\nIveskite deko ID: "); //Enter deck ID: 
     scanf("%d", &idToCheck);
     if (checkID(idToCheck, deckCounter, deck) == 0)
         return idToCheck;
@@ -51,7 +51,7 @@ int getPosition(Deck **deck, int deckCounter, int id)
 
 Deck **addToArray(Deck **ptr_array, Deck *ptr, int *elementCount)
 {
-    printf("Element count in func: %d\n", *elementCount);
+    // printf("Element count in func: %d\n", *elementCount);
     if (ptr_array == NULL)
     {
         ptr_array = (Deck **) malloc(sizeof(Deck *));
@@ -75,23 +75,22 @@ void menu()
     int deckCounter = 0; // deck counter
     Deck **deck_arr = NULL; // array of decks
     Deck *dq;
-    int idToCheck, dataToPush, position, pop;
+    int idToCheck, dataToPush, position, pop, peek;
     while(showMenu)
     {
         fflush(stdin);
         system("clear");
-        printf("1. Create deck\n");
-        printf("2. Check if deck is empty\n");
-        printf("3. Check if deck is full\n");
-        printf("4. Push to front\n");
-        printf("5. Push to back\n");
-        printf("6. Pop from front\n");
-        printf("7. Pop from back\n");
-        printf("8. Print deck\n");
-        printf("9. Destroy deck\n");
-        printf("0. Exit\n");
-        // printf("Deck Counter: %d\n", deckCounter);
-        printf("Enter your choice: ");
+        printf("[1] Sukurti deka\n"); //Create deck
+        printf("[2] Patikrinti, ar dekas tuscias\n"); //Check if deck is empty
+        printf("[3] Patikrinti, ar dekas pilnas\n"); //Check if deck is full
+        printf("[4] Iterpti duomenis i deko pradzia\n"); //Push to front
+        printf("[5] Iterpti duomenis i deko pabaiga\n"); //Push to back
+        printf("[6] Isimti elementa is deko pradzios\n"); //Pop from front
+        printf("[7] Isimti elementa is deko pabaigos\n"); //Pop from back
+        printf("[8] Parasyti deko sudeti\n"); //Print deck
+        printf("[9] Sunaikinti deka\n"); //Destroy deck
+        printf("[0] Iseiti\n"); //Exit
+        printf("Jusu pasirinkimas: ");
         scanf("%d", &choice);
 
         switch(choice)
@@ -127,47 +126,52 @@ void menu()
                 // printf("FUNC\n");
                 // deck[idCount-1] = createDeck(deckCounter);
                 system("clear");
-                printf("Deck created with id: %d\n", idCount-1);
+                printf("Dekas sukurtas su ID: %d\n", idCount-1); //Deck created with id: 
                 waitForInput();
                 break;
             case 2:
                 idToCheck = askForDeck(deckCounter, deck_arr);
                 if (idToCheck == -2)
-                    printf("No decks available\n");
+                    // printf("Nera prieinamu deku\n"); //No decks available
+                    printf("Klaida #2\n");
                 else if (idToCheck != -1)
                 {
                     if (checkEmpty(deck_arr[idToCheck]) == 0)
-                        printf("Deck is empty.\n");
+                        printf("Dekas yra tuscias\n"); //Deck is empty.
                     else
-                        printf("Deck is not empty.\n");
+                        printf("Dekas nera tuscias\n"); //Deck is not empty.
                 }
                 else
                 {
-                    printf("Incorrect ID.");
+                    // printf("Toks ID neegzistuoja.\n"); //Incorrect ID
+                    printf("Klaida #3\n");
                 }
                 waitForInput();
                 break;
             case 3:
                 idToCheck = askForDeck(deckCounter, deck_arr);
                 if (idToCheck == -2)
-                    printf("No decks available\n");
+                    // printf("Nera prieinamu deku\n"); //No decks available
+                    printf("Klaida #2\n");
                 else if (idToCheck != -1)
                 {
                     if (checkFull(deck_arr[idToCheck]) == 0)
-                        printf("Deck is full.\n");
+                        printf("Dekas yra pilnas\n"); //Deck is full.
                     else
-                        printf("Deck is not full.\n");
+                        printf("Dekas nera pilnas\n"); //Deck is not full.
                 }
                 else
                 {
-                    printf("Incorrect ID.");
+                    // printf("Toks ID neegzistuoja.\n"); //Incorrect ID
+                    printf("Klaida #3\n");
                 }
                 waitForInput();
                 break;
             case 4:
                 idToCheck = askForDeck(deckCounter, deck_arr);
                 if (idToCheck == -2)
-                    printf("No decks available\n");
+                    // printf("Nera prieinamu deku\n"); //No decks available
+                    printf("Klaida #2\n");
                 else if (idToCheck != -1)
                 {
                     dataToPush = askForData();
@@ -176,14 +180,16 @@ void menu()
                 }
                 else
                 {
-                    printf("Incorrect ID.");
+                    // printf("Toks ID neegzistuoja.\n"); //Incorrect ID
+                    printf("Klaida #3\n");
                 }
                 waitForInput();
                 break;
             case 5:
                 idToCheck = askForDeck(deckCounter, deck_arr);
                 if (idToCheck == -2)
-                    printf("No decks available\n");
+                    // printf("Nera prieinamu deku\n"); //No decks available
+                    printf("Klaida #2\n");
                 else if (idToCheck != -1)
                 {
                     dataToPush = askForData();
@@ -192,14 +198,16 @@ void menu()
                 }
                 else
                 {
-                    printf("Incorrect ID.");
+                    // printf("Toks ID neegzistuoja.\n"); //Incorrect ID
+                    printf("Klaida #3\n");
                 }
                 waitForInput();
                 break;
             case 6:
                 idToCheck = askForDeck(deckCounter, deck_arr);
                 if (idToCheck == -2)
-                    printf("No decks available\n");
+                    // printf("Nera prieinamu deku\n"); //No decks available
+                    printf("Klaida #2\n");
                 else if (idToCheck != -1)
                 {
                     position = getPosition(deck_arr, deckCounter, idToCheck);
@@ -208,7 +216,8 @@ void menu()
                 }
                 else
                 {
-                    printf("Incorrect ID!\n");
+                    // printf("Toks ID neegzistuoja.\n"); //Incorrect ID
+                    printf("Klaida #3\n");
                     // waitForInput();
                 }
                 waitForInput();
@@ -216,17 +225,18 @@ void menu()
             case 7:
                 idToCheck = askForDeck(deckCounter, deck_arr);
                 if (idToCheck == -2)
-                    printf("No decks available\n");
+                    // printf("Nera prieinamu deku\n"); //No decks available
+                    printf("Klaida #2\n");
                 else if (idToCheck != -1)
                 {
-                    int pop;
                     position = getPosition(deck_arr, deckCounter, idToCheck);
                     popBack(deck_arr[position], &pop);
                     // waitForInput();
                 }
                 else
                 {
-                    printf("Incorrect ID!\n");
+                    // printf("Toks ID neegzistuoja.\n"); //Incorrect ID
+                    printf("Klaida #3\n");
                     // waitForInput();
                 }
                 waitForInput();
@@ -234,7 +244,8 @@ void menu()
             case 8:
                 idToCheck = askForDeck(deckCounter, deck_arr);
                 if (idToCheck == -2)
-                    printf("No decks available\n");
+                    // printf("Nera prieinamu deku\n"); //No decks available
+                    printf("Klaida #2\n");
                 else if (idToCheck != -1)
                 {
                     position = getPosition(deck_arr, deckCounter, idToCheck);
@@ -242,27 +253,91 @@ void menu()
                 }
                 else
                 {
-                    printf("Incorrect ID.");
+                    // printf("Toks ID neegzistuoja.\n"); //Incorrect ID
+                    printf("Klaida #3\n");
                 }
                 waitForInput();
                 break;
             case 9:
                 idToCheck = askForDeck(deckCounter, deck_arr);
                 if (idToCheck == -2)
-                    printf("No decks available\n");
+                    // printf("Nera prieinamu deku\n"); //No decks available
+                    printf("Klaida #2\n");
                 else if (idToCheck != -1)
                 {
                     deck_arr = removeDeckFromArr(deck_arr, &deckCounter, idToCheck);
-                    printf("Deck with id %d has been removed!\n", idToCheck);
+                    printf("Dekas su ID %d buvo istrintas\n", idToCheck); //Deck with id %d has been removed!
+                }
+                else
+                {
+                    // printf("Toks ID neegzistuoja.\n"); //Incorrect ID
+                    printf("Klaida #3\n");
+                }
+                waitForInput();
+                break;
+            case 10:
+                idToCheck = askForDeck(deckCounter, deck_arr);
+                if (idToCheck == -2)
+                    // printf("Nera prieinamu deku\n"); //No decks available
+                    printf("Klaida #2\n");
+                else if (idToCheck != -1)
+                {
+                    position = getPosition(deck_arr, deckCounter, idToCheck);
+                    peekFront(deck_arr[position], &peek);
+                    // printf("Value: %d", peekFront(deck_arr[position]));
+                    // printf("Deck with id %d has %d elements\n", idToCheck, deck_arr[position]->size);
+                }
+                else
+                {
+                    // printf("Toks ID neegzistuoja.\n"); //Incorrect ID
+                    printf("Klaida #3\n");
+                }
+                waitForInput();
+                break;
+            case 11:
+                idToCheck = askForDeck(deckCounter, deck_arr);
+                if (idToCheck == -2)
+                    // printf("Nera prieinamu deku\n"); //No decks available
+                    printf("Klaida #2\n");
+                else if (idToCheck != -1)
+                {
+                    position = getPosition(deck_arr, deckCounter, idToCheck);
+                    peekRear(deck_arr[position], &peek);
+                    // printf("Value: %d", peekFront(deck_arr[position]));
+                    // printf("Deck with id %d has %d elements\n", idToCheck, deck_arr[position]->size);
+                }
+                else
+                {
+                    // printf("Toks ID neegzistuoja.\n"); //Incorrect ID
+                    printf("Klaida #3\n");
+                }
+                waitForInput();
+                break;
+            case 12:
+                idToCheck = askForDeck(deckCounter, deck_arr);
+                if (idToCheck == -2)
+                    // printf("Nera prieinamu deku\n"); //No decks available
+                    printf("Klaida #2\n");
+                else if (idToCheck != -1)
+                {
+                    position = getPosition(deck_arr, deckCounter, idToCheck);
+                    printf("Dekas su ID %d turi %d elementu\n", idToCheck, elementCount(deck_arr[position])); //Deck with id %d has %d elements
+                }
+                else
+                {
+                    // printf("Toks ID neegzistuoja.\n"); //Incorrect ID
+                    printf("Klaida #3\n");
                 }
                 waitForInput();
                 break;
             case 0:
-                printf("Exiting program...\n");
-                exit(0);
+                printf("Iseinama is programos...\n"); //Exiting program...
+                // exit(0);
+                showMenu = false;
                 break;
             default:
-                printf("Invalid choice, try again");
+                printf("Tokio pasirinkimo nera, pabandykite dar karta.\n"); //Invalid choice, try again
+                waitForInput();
         }
     }
 }
@@ -288,7 +363,7 @@ int main()
 
 /*
 Deck functions:
-    createDeck(int id);                 // Creates deck element and assigns an id to it. Example: Deck *dq = createDeck(0);
+    createDeck(int id);                 // Creates deck element and assigns an id to it. Example: Deck *dq = createDeck(0); (use id 0 if not using array)
     checkEmpty(Deck *d);                // Checks if deck is empty (returns 0 if true and -1 if false)
     checkFull(Deck *d);                 // Checks if deck is full (returns 0 if true and -1 if false)
     print(Node *n);                     // Prints deck elements to the screen
@@ -304,5 +379,24 @@ Menu functions:
 
 Make int elements variable (int elements = 0;)
 Create Deck element and assign it to pointer (Deck *dq = createDeck(0));
+
+*/
+
+/*
+Klaida #1: 
+    Nepavyko paskirstyti atminties
+
+Klaida #2:
+    Nera prieinamu deku
+
+Klaida #3:
+    Toks ID neegzistuoja.
+
+Klaida #4:
+    Dekas yra tuscias. Nepavyko parodyti elementus.
+
+Klaida #5:
+    Nepavyko isimti elementa is deko. Dekas yra tuscias.
+
 
 */
