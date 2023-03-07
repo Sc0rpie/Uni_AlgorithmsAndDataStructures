@@ -19,7 +19,7 @@ Deck *createDeck(int id)
     if (d == NULL)
     {
         // printf("Atminties paskirstymo klaida\n");
-        printf("Klaida #1\n");
+        printf("Klaida #1 - Atminties paskirstymo klaida\n");
         return NULL;
     }
     d->id = id;
@@ -47,7 +47,7 @@ void print(Node *n) /* Sąrašo rašymas į konsolę */
     if (n == NULL)
     {
         // printf("Dekas yra tuscias\n"); //Deck is empty!
-        printf("Klaida #4\n");
+        printf("Klaida #4 - Dekas yra tuscias\n");
         return;
     }
     while (n != NULL)
@@ -91,7 +91,7 @@ void popFront(Deck *d, int *value)
     if(checkEmpty(d) == 0)
     {
         // printf("Neimanoma isimti elementa. Dekas yra tuscias!\n"); //Unable to pop. Deck is empty!
-        printf("Klaida #5\n");
+        printf("Klaida #5 - Neimanoma isimti elementa. Dekas yra tuscias!\n");
         return;
     }
     Node *temp = d->head;
@@ -111,7 +111,7 @@ void popBack(Deck *d, int *value)
     if(checkEmpty(d) == 0)
     {
         // printf("Neimanoma isimti elementa. Dekas yra tuscias!\n"); //Unable to pop. Deck is empty!
-        printf("Klaida #5\n");
+        printf("Klaida #5 - Neimanoma isimti elementa. Dekas yra tuscias!\n");
         return;
     }
     Node *temp = d->tail;
