@@ -50,11 +50,13 @@ void print(Node *n) /* Sąrašo rašymas į konsolę */
         printf("Klaida #4 - Dekas yra tuscias\n");
         return;
     }
+    printf("Pradzia -> ");
     while (n != NULL)
     {
         printf("%d ", n->data);
         n = n->next;
     }
+    printf("<- Pabaiga");
     printf("\n");
 }
 
@@ -103,7 +105,7 @@ void popFront(Deck *d, int *value)
         d->head->prev = NULL;
     free(temp);
     
-    printf("Isimta reiksme: %d\n", *value); //Value popped: 
+    printf("Isimtas elementas su reiksme: %d\n", *value); //Value popped: 
 }
 
 void popBack(Deck *d, int *value)
@@ -122,7 +124,7 @@ void popBack(Deck *d, int *value)
     else
         d->tail->next = NULL;
     free(temp);
-    printf("Isimta reiksme: %d\n", *value); //Value popped: 
+    printf("Isimtas elementas su reiksme: %d\n", *value); //Value popped: 
 }
 
 void destroyDeck(Deck *d)

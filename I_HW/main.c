@@ -146,7 +146,7 @@ void menu()
             else
             {
                 // printf("Toks ID neegzistuoja.\n"); //Incorrect ID
-                printf("Klaida #3 - Toks ID neegzistuoja - Toks ID neegzistuoja\n");
+                printf("Klaida #3 - Toks ID neegzistuoja\n");
             }
             waitForInput();
             break;
@@ -251,7 +251,6 @@ void menu()
             else if (idToCheck != -1)
             {
                 position = getPosition(deck_arr, deckCounter, idToCheck);
-                printf("Pradzia: ");
                 print(deck_arr[position]->head);
             }
             else
@@ -396,7 +395,7 @@ Klaida #3:
     Toks ID neegzistuoja.
 
 Klaida #4:
-    Dekas yra tuscias. Nepavyko parodyti elementus.
+    Dekas yra tuscias.
 
 Klaida #5:
     Nepavyko isimti elementa is deko. Dekas yra tuscias.
