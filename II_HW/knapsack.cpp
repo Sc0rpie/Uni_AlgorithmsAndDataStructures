@@ -46,7 +46,9 @@ void printKnapsack(vector<Item> items, vector<int> knapsack, int option, int ind
     // Printing the last item in the knapsack if backtracking
     if (option == 0)
     {
-        outFull << " d" << index;
+        if (counter != 0)
+            outFull << " ";
+        outFull << "d" << index;
         totalPrice += items[index - 1].value;
         totalWeight += items[index - 1].weight;
     }
@@ -68,12 +70,18 @@ void printKnapsack(vector<Item> items, vector<int> knapsack, int option, int ind
     // If backtracking (option == 0), print the last item as well
     if (option == 0)
     {
-        outFull << '+' << items[index - 1].value;
+        if (counter != 0)
+        {
+            outFull << "+";
+            outFull << items[index - 1].value;
+        }
     }
     // If there is only one item in the knapsack, print a dot instead of the equal sign
     // else print the equal sign and the total price
     if (counter == 1)
         outFull << ". ";
+    else if (counter == 0)
+        outFull << items[index - 1].value << ". ";
     else
         outFull << "=" << totalPrice << ". ";
     
@@ -93,12 +101,19 @@ void printKnapsack(vector<Item> items, vector<int> knapsack, int option, int ind
     // If backtracking (option == 0), print the last item as well
     if (option == 0)
     {
-        outFull << '+' << items[index - 1].weight;
+        if (counter != 0)
+        {
+            outFull << "+";
+        outFull << items[index - 1].weight;
+        }
+            
     }
     // If there is only one item in the knapsack, print a dot instead of the equal sign
     // else print the equal sign and the total weight
     if (counter == 1)
         outFull << ". ";
+    else if (counter == 0)
+        outFull << items[index - 1].weight << ". ";
     else
         outFull << "=" << totalWeight << ". ";
 
@@ -215,7 +230,7 @@ int main()
     ifstream src(filename.c_str());       // open data file
     if (src)
     {
-        cout << "Failas " << filename << " nuskaitytas sekmingai." << endl << endl;
+        cout << "Failas " << filename << " nuskaitytas sekmingai." << endl << "Programa vykdoma..." << endl << endl;
     }
     else
     {
@@ -223,7 +238,7 @@ int main()
         return 0;
     }
     // Open output file after checking if the input file exists
-    ofstream outFull("out-ilgas.txt");    // open full output file
+    ofstream outFull("2uzd-03var-protokolas1-Rackauskas-20230329.txt");    // open full output file
 
 
     // Print the header of the output file
@@ -231,7 +246,7 @@ int main()
     outFull << "1 DALIS. DUOMENYS." << endl;
     outFull << "2 uzduotis, 3 variantas" << endl << endl;
     outFull << "1.1. SALYGA. ";
-    outFull << "Duota N daiktu, kuriu svoriai s1, s2, ... sN, o kainos k1, k2, ... kN. Programa turi sudaryti daiktu rinkini, kurio kaina butu maksimali, o svoris nevirsytu nurodyto svorio S. Vartotojas nurodo faila, is kurio programa iveda daiktu svorius ir kainas, bei svori S." << endl << endl;
+    outFull << "Duota N daiktu, kuriu svoriai s1, s2, ... sN, o kainos k1, k2, ... kN.\nPrograma turi sudaryti daiktu rinkini, kurio kaina butu maksimali, o svoris nevirsytu\nnurodyto svorio S. Vartotojas nurodo faila, is kurio programa iveda daiktu svorius ir kainas, bei svori S." << endl << endl;
     outFull << "1.2. PRADINE BUSENA." << endl;
     outFull << "\t1.2.1)Ivesties failas: " << filename << endl;
 
