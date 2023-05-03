@@ -89,18 +89,18 @@ void getClinicData(Clinic clinic)
     int size = clinic.patients.size();
     for (int i = 0; i < size; i++)
     {
-        cout << "Patient " << i + 1 << " isIndividual: " << clinic.patients.front().isIndividual << " firstTime: " << clinic.patients.front().firstTime << endl;
+        out << "Patient " << i + 1 << " isIndividual: " << clinic.patients.front().isIndividual << " firstTime: " << clinic.patients.front().firstTime << endl;
         clinic.patients.pop();
     }
     size = clinic.individualTherapies.size();
     for (int i = 0; i < size; i++)
     {
-        cout << "Individual therapy " << i + 1 << " isFull: " << clinic.individualTherapies[i].isFull << endl;
+        out << "Individual therapy " << i + 1 << " isFull: " << clinic.individualTherapies[i].isFull << endl;
     }
     size = clinic.groupTherapies.size();
     for (int i = 0; i < size; i++)
     {
-        cout << "Group therapy " << i + 1 << " isFull: " << clinic.groupTherapies[i].isFull << endl;
+        out << "Group therapy " << i + 1 << " isFull: " << clinic.groupTherapies[i].isFull << endl;
     }
 }
 
@@ -121,30 +121,30 @@ int maxGroup(State state, Clinic clinic, bool isForNew) // returns group number 
 
 void writeStateData(State state)
 {
-    cout << "Olen Rackauskas. 3 grupe, 2 pogrupis." << endl;
-    cout << "ADS 3 uzduotis. 10 variantas: Apsilankymas pas psichologa." << endl
+    out << "Olen Rackauskas. 3 grupe, 2 pogrupis." << endl;
+    out << "ADS 3 uzduotis. 10 variantas: Apsilankymas pas psichologa." << endl
          << endl;
-    cout << "DALIS 1. Ivesti rodikliai." << endl;
-    // cout << "Pradiniai duomenys: " << endl;
-    cout << "Proceso trukme:\t\t\t\t\t\t\t" << state.sim_hours << " val." << endl;
-    cout << "Privaciu psichologu skaicius:\t\t\t\t\t" << state.m << '.' << endl;
-    cout << "Grupes psichologu skaicius:\t\t\t\t\t" << state.n << '.' << endl;
-    cout << "Privacios terapijos trukme:\t\t\t\t\t" << state.InT << " val." << endl;
-    cout << "Grupines terapijos trukme:\t\t\t\t\t" << state.GrT << " val." << endl;
-    cout << "Zmoniu skaicius grupeje (nauji pacientai):\t\t\t" << state.k << '.' << endl;
-    cout << "Zmoniu skaicius grupeje (pakartotinai ateinantys pacientai):\t" << state.nK << '.' << endl;
-    cout << "Po kiek laiko grizta pacientai:\t\t\t\t\t" << state.d << " val." << endl;
-    cout << "Sansas, kad ateis naujas pacientas:\t\t\t\t" << state.p1 << "%." << endl;
-    cout << "Sansas, kad pacientas pasveiks greiciau:\t\t\t" << state.p2 << "%." << endl;
-    cout << "Procentas, ant kiek greiciau pasveiks pacientas:\t\t" << state.h << "%." << endl;
-    cout << "Sansas, kad pacientas pasirinks privacia terapija:\t\t" << state.p3 << "%." << endl;
-    cout << "Kiek kartu reikia nueiti i grupines terapijas:\t\t\t" << state.GrN << '.' << endl;
-    cout << "Kiek kartu reikia nueiti i individualias terapijas:\t\t" << state.InN << '.' << endl;
-    cout << "Privaciu terapiju kaina:\t\t\t\t\t" << state.InK << " eur." << endl;
-    cout << "Grupiniu terapiju kaina:\t\t\t\t\t" << state.GrK << " eur." << endl
+    out << "DALIS 1. Ivesti rodikliai." << endl;
+    // out << "Pradiniai duomenys: " << endl;
+    out << "Proceso trukme:\t\t\t\t\t\t\t" << state.sim_hours << " val." << endl;
+    out << "Privaciu psichologu skaicius:\t\t\t\t\t" << state.m << '.' << endl;
+    out << "Grupes psichologu skaicius:\t\t\t\t\t" << state.n << '.' << endl;
+    out << "Privacios terapijos trukme:\t\t\t\t\t" << state.InT << " val." << endl;
+    out << "Grupines terapijos trukme:\t\t\t\t\t" << state.GrT << " val." << endl;
+    out << "Zmoniu skaicius grupeje (nauji pacientai):\t\t\t" << state.k << '.' << endl;
+    out << "Zmoniu skaicius grupeje (pakartotinai ateinantys pacientai):\t" << state.nK << '.' << endl;
+    out << "Po kiek laiko grizta pacientai:\t\t\t\t\t" << state.d << " val." << endl;
+    out << "Sansas, kad ateis naujas pacientas:\t\t\t\t" << state.p1 << "%." << endl;
+    out << "Sansas, kad pacientas pasveiks greiciau:\t\t\t" << state.p2 << "%." << endl;
+    out << "Procentas, ant kiek greiciau pasveiks pacientas:\t\t" << state.h << "%." << endl;
+    out << "Sansas, kad pacientas pasirinks privacia terapija:\t\t" << state.p3 << "%." << endl;
+    out << "Kiek kartu reikia nueiti i grupines terapijas:\t\t\t" << state.GrN << '.' << endl;
+    out << "Kiek kartu reikia nueiti i individualias terapijas:\t\t" << state.InN << '.' << endl;
+    out << "Privaciu terapiju kaina:\t\t\t\t\t" << state.InK << " eur." << endl;
+    out << "Grupiniu terapiju kaina:\t\t\t\t\t" << state.GrK << " eur." << endl
          << endl;
 
-    cout << "DALIS 2. Protokolas." << endl;
+    out << "DALIS 2. Protokolas." << endl;
 }
 
 void getWaitAndReturnList(State state, Clinic clinic)
@@ -153,11 +153,11 @@ void getWaitAndReturnList(State state, Clinic clinic)
     queue<Patient> temp(clinic.returningP);
     int size = temp.size();
 
-    cout << "DALIS 3. Rezultatai." << endl;
-    cout << "Atejusiu pacientu skaicius \t\t\t\t= " << patientID << '.' << endl;
-    cout << "Pasveikusiu pacientu skaicius \t\t\t\t= " << clinic.isWell << '.' << endl;
-    cout << "Laukianciu pacientu skaicius (grupines terapijos) \t= " << clinic.groupWaiting.size() << '.' << endl;
-    cout << "Laukianciu pacientu skaicius (privacios terapijos) \t= " << clinic.indivWaiting.size() << '.' << endl;
+    out << "DALIS 3. Rezultatai." << endl;
+    out << "Atejusiu pacientu skaicius \t\t\t\t= " << patientID << '.' << endl;
+    out << "Pasveikusiu pacientu skaicius \t\t\t\t= " << clinic.isWell << '.' << endl;
+    out << "Laukianciu pacientu skaicius (grupines terapijos) \t= " << clinic.groupWaiting.size() << '.' << endl;
+    out << "Laukianciu pacientu skaicius (privacios terapijos) \t= " << clinic.indivWaiting.size() << '.' << endl;
 
     if (size > 0)
         for (int i = 0; i < size; i++)
@@ -169,10 +169,10 @@ void getWaitAndReturnList(State state, Clinic clinic)
             temp.pop();
         }
 
-    cout << "Sugriztanciu pacientu skaicius (grupines terapijos) \t= " << gr << '.' << endl;
-    // cout << "Sugriztanciu pacientu skaicius (privacios terapijos): " << in << '.' << endl;
+    out << "Sugriztanciu pacientu skaicius (grupines terapijos) \t= " << gr << '.' << endl;
+    // out << "Sugriztanciu pacientu skaicius (privacios terapijos): " << in << '.' << endl;
 
-    // cout << endl << "Pasveiko pacientu: " << clinic.isWell << endl;
+    // out << endl << "Pasveiko pacientu: " << clinic.isWell << endl;
 }
 
 void printNeededSpecialists(State state, Clinic clinic)
@@ -192,18 +192,18 @@ void printNeededSpecialists(State state, Clinic clinic)
         }
 
     if (clinic.indivWaiting.size() + in > clinic.groupWaiting.size() + gr)
-        cout << "Labiau apsimoka eiti i grupines terapijas." << endl;
+        out << "Labiau apsimoka eiti i grupines terapijas." << endl;
     else
-        cout << "Labiau apsimoka eiti i privacias terapijas." << endl;
-    cout << endl;
+        out << "Labiau apsimoka eiti i privacias terapijas." << endl;
+    out << endl;
 
     int num_additional_specialists = ceil((clinic.indivWaiting.size() + in) * state.InN / (0.186 * state.sim_hours));
     int num_additional_g_specialists = ceil((clinic.groupWaiting.size() + gr) * state.GrN * state.nK / (0.4 * state.sim_hours));
 
     if (num_additional_specialists > 0)
-        cout << "Reikia dar " << num_additional_specialists << " privaciu specialistu" << endl;
+        out << "Reikia dar " << num_additional_specialists << " privaciu specialistu." << endl;
     if (num_additional_g_specialists > 0)
-        cout << "Reikia dar " << num_additional_g_specialists << " grupiniu specialistu" << endl;
+        out << "Reikia dar " << num_additional_g_specialists << " grupiniu specialistu." << endl;
 }
 
 void printReturning(Clinic clinic)
@@ -212,7 +212,7 @@ void printReturning(Clinic clinic)
     queue<Patient> temp(clinic.returningP);
     for (int i = 0; i < size; i++)
     {
-        cout << "P" << temp.front().ID << " sugrizta i klinika.  |  ";
+        out << "P" << temp.front().ID << " sugrizta i klinika.  |  ";
         temp.pop();
     }
 }
@@ -230,10 +230,10 @@ Clinic checkIndividualPatients(State state, Clinic clinic, int time)
             {
                 if (!clinic.individualTherapies[j].isFull)
                 {
-                    // cout << "P" << clinic.indivWaiting.front().ID << " pridetas prie privacios terapijos. Specialisto ID: " << i + 1 << endl;
+                    // out << "P" << clinic.indivWaiting.front().ID << " pridetas prie privacios terapijos. Specialisto ID: " << i + 1 << endl;
                     clinic.individualTherapies[j].patient = clinic.indivWaiting.front();
                     clinic.individualTherapies[j].isFull = true;
-                    // cout << "Popping ID from waiting: " << clinic.indivWaiting.front().ID << endl;
+                    // out << "Popping ID from waiting: " << clinic.indivWaiting.front().ID << endl;
                     clinic.indivWaiting.pop();
                     wasAdded = true;
                     break;
@@ -241,7 +241,7 @@ Clinic checkIndividualPatients(State state, Clinic clinic, int time)
             }
             if (!wasAdded)
             {
-                // cout << "Pacientai is laukimo eiles nebegali buti priimti." << endl;
+                // out << "Pacientai is laukimo eiles nebegali buti priimti." << endl;
                 break;
             }
         }
@@ -253,27 +253,27 @@ Clinic checkIndividualPatients(State state, Clinic clinic, int time)
         // individual therapy
         if (clinic.patients.front().isIndividual == 1)
         {
-            cout << "\tAtvyko P" << clinic.patients.front().ID << ". Pacientas nori privacios terapijos." << endl;
+            out << "\tAtvyko P" << clinic.patients.front().ID << ". Pacientas nori privacios terapijos." << endl;
             // bool wasAdded = false;
             for (int i = 0; i < state.m; i++)
             {
-                // cout << "Is full: " << clinic.individualTherapies[i].isFull << endl;
+                // out << "Is full: " << clinic.individualTherapies[i].isFull << endl;
                 if (!clinic.individualTherapies[i].isFull)
                 {
                     clinic.individualTherapies[i].patient = clinic.patients.front();
                     clinic.individualTherapies[i].isFull = true;
-                    // cout << "Popping ID: " << clinic.patients.front().ID << endl;
+                    // out << "Popping ID: " << clinic.patients.front().ID << endl;
                     clinic.patients.pop();
                     wasAdded = true;
-                    // cout << "Patient added" << endl;
+                    // out << "Patient added" << endl;
                     break;
                 }
             }
             if (!wasAdded)
             {
-                cout << "\tP" << clinic.patients.front().ID << " turi laukti eileje." << endl;
+                out << "\tP" << clinic.patients.front().ID << " turi laukti eileje." << endl;
                 clinic.indivWaiting.push(clinic.patients.front());
-                // cout << "Popping ID into Waiting: " << clinic.patients.front().ID << endl;
+                // out << "Popping ID into Waiting: " << clinic.patients.front().ID << endl;
                 clinic.patients.pop();
             }
         }
@@ -286,30 +286,30 @@ Clinic checkIndividualPatients(State state, Clinic clinic, int time)
         // printReturning(clinic);
         if (clinic.returningP.front().isIndividual)
         {
-            // cout << "When to return? " << clinic.returningP.front().whenToReturn << " time: " << time << endl;
+            // out << "When to return? " << clinic.returningP.front().whenToReturn << " time: " << time << endl;
             if (clinic.returningP.front().whenToReturn == time)
-                cout << "\tAtvyko P" << clinic.returningP.front().ID << "(pakartotinai). Pacientas nori privacios terapijos." << endl;
+                out << "\tAtvyko P" << clinic.returningP.front().ID << "(pakartotinai). Pacientas nori privacios terapijos." << endl;
             for (int i = 0; i < state.m; i++)
             {
-                // cout << clinic.returningP.front().ID << " vazineja for'e" << endl;
+                // out << clinic.returningP.front().ID << " vazineja for'e" << endl;
                 if (!clinic.individualTherapies[i].isFull && clinic.returningP.front().whenToReturn == time)
                 {
-                    // cout << "Pakartotinai added?" << endl;
+                    // out << "Pakartotinai added?" << endl;
                     clinic.individualTherapies[i].patient = clinic.returningP.front();
                     clinic.individualTherapies[i].isFull = true;
-                    // cout << "Popping return ID: " << clinic.returningP.front().ID << endl;
+                    // out << "Popping return ID: " << clinic.returningP.front().ID << endl;
                     clinic.returningP.pop();
                     wasAdded = true;
-                    // cout << "Adding returning indiv patient to " << i + 1 << "th therapist" << endl;
+                    // out << "Adding returning indiv patient to " << i + 1 << "th therapist" << endl;
                     break;
                 }
             }
-            // cout << "Was added? " << wasAdded << endl;
+            // out << "Was added? " << wasAdded << endl;
             if (!wasAdded && clinic.returningP.front().whenToReturn == time)
             {
-                cout << "\tP" << clinic.returningP.front().ID << " turi laukti eileje." << endl;
+                out << "\tP" << clinic.returningP.front().ID << " turi laukti eileje." << endl;
                 clinic.indivWaiting.push(clinic.returningP.front());
-                // cout << "Popping return ID into waiting: " << clinic.returningP.front().ID << endl;
+                // out << "Popping return ID into waiting: " << clinic.returningP.front().ID << endl;
                 clinic.returningP.pop();
             }
         }
@@ -324,18 +324,18 @@ void printIndividualQueue(Clinic clinic)
     int size = temp.size();
     if (size > 0)
     {
-        cout << "\tPrivacios terapijos eile: ";
+        out << "\tPrivacios terapijos eile: ";
         for (int i = 0; i < size; i++)
         {
             if (i != size - 1)
-                cout << "P" << temp.front().ID << ", ";
+                out << "P" << temp.front().ID << ", ";
             else
-                cout << "P" << temp.front().ID << ".";
+                out << "P" << temp.front().ID << ".";
             temp.pop();
         }
-        cout << endl;
+        out << endl;
     }
-    // cout << endl;
+    // out << endl;
 }
 
 void printGroupQueue(Clinic clinic)
@@ -344,18 +344,18 @@ void printGroupQueue(Clinic clinic)
     int size = temp.size();
     if (size > 0)
     {
-        cout << "\tGrupines terapijos eile: ";
+        out << "\tGrupines terapijos eile: ";
         for (int i = 0; i < size; i++)
         {
             if (i != size - 1)
-                cout << "P" << temp.front().ID << ", ";
+                out << "P" << temp.front().ID << ", ";
             else
-                cout << "P" << temp.front().ID << ".";
+                out << "P" << temp.front().ID << ".";
             temp.pop();
         }
-        cout << endl;
+        out << endl;
     }
-    // cout << endl;
+    // out << endl;
 }
 
 void printCurrentGroup(State state, Clinic clinic)
@@ -364,19 +364,19 @@ void printCurrentGroup(State state, Clinic clinic)
     {
         if (clinic.groupTherapies[i].patients.size() > 0)
         {
-            cout << "\tGrupes " << i + 1 << " pacientai: ";
+            out << "\tGrupes " << i + 1 << " pacientai: ";
             for (int j = 0; j < clinic.groupTherapies[i].patients.size(); j++)
             {
-                // cout << "Size: " << clinic.groupTherapies[i].patients.size()-1 << " j: " << j << endl;
+                // out << "Size: " << clinic.groupTherapies[i].patients.size()-1 << " j: " << j << endl;
                 if (j != clinic.groupTherapies[i].patients.size() - 1)
-                    cout << "P" << clinic.groupTherapies[i].patients[j].ID << ", ";
+                    out << "P" << clinic.groupTherapies[i].patients[j].ID << ", ";
                 else
-                    cout << "P" << clinic.groupTherapies[i].patients[j].ID << ".";
+                    out << "P" << clinic.groupTherapies[i].patients[j].ID << ".";
             }
-            cout << endl;
+            out << endl;
         }
     }
-    // cout << endl;
+    // out << endl;
 }
 
 Clinic checkGroupPatients(State state, Clinic clinic, int time)
@@ -392,13 +392,13 @@ Clinic checkGroupPatients(State state, Clinic clinic, int time)
             {
                 if (clinic.groupTherapies[i].patients.size() < state.k && clinic.groupWaiting.front().firstTime == true && clinic.groupTherapies[i].isForFirstTime)
                 {
-                    // cout << "Adding from waiting list" << endl;
+                    // out << "Adding from waiting list" << endl;
                     clinic.groupTherapies[i].patients.push_back(clinic.groupWaiting.front());
                     clinic.groupTherapies[i].isForFirstTime = true;
-                    cout << "\tP" << clinic.groupWaiting.front().ID << " yra priskirtas prie grupes " << i + 1 << ". Jos dydis = " << clinic.groupTherapies[i].patients.size() << " pacientai(-as)." << endl;
+                    out << "\tP" << clinic.groupWaiting.front().ID << " yra priskirtas prie grupes " << i + 1 << ". Jos dydis = " << clinic.groupTherapies[i].patients.size() << " pacientai(-as)." << endl;
                     clinic.groupWaiting.pop();
                     wasAdded = true;
-                    // cout << "Grupes " << i + 1 << " dydis = " << clinic.groupTherapies[i].patients.size() << '.' << endl;
+                    // out << "Grupes " << i + 1 << " dydis = " << clinic.groupTherapies[i].patients.size() << '.' << endl;
                     if (clinic.groupTherapies[i].patients.size() == state.k)
                     {
                         clinic.groupTherapies[i].isFull = true;
@@ -407,14 +407,14 @@ Clinic checkGroupPatients(State state, Clinic clinic, int time)
                 }
                 else if ((clinic.groupTherapies[i].patients.size() == 0 && clinic.groupWaiting.front().firstTime == false) || (clinic.groupTherapies[i].patients.size() > 0 && clinic.groupTherapies[i].isForFirstTime == false && clinic.groupWaiting.front().firstTime == false))
                 {
-                    // cout << "Adding from waiting list" << endl;
+                    // out << "Adding from waiting list" << endl;
                     clinic.groupTherapies[i].patients.push_back(clinic.groupWaiting.front());
                     clinic.groupTherapies[i].isForFirstTime = false;
-                    cout << "\tP" << clinic.groupWaiting.front().ID << " yra priskirtas prie grupes " << i + 1 << ". Jos dydis = " << clinic.groupTherapies[i].patients.size() << " pacientai(-as)." << endl;
+                    out << "\tP" << clinic.groupWaiting.front().ID << " yra priskirtas prie grupes " << i + 1 << ". Jos dydis = " << clinic.groupTherapies[i].patients.size() << " pacientai(-as)." << endl;
                     clinic.groupWaiting.pop();
                     wasAdded = true;
-                    // cout << "Assigned to group therapy " << i + 1 << endl;
-                    // cout << "\tGroup size: " << clinic.groupTherapies[i].patients.size() << endl;
+                    // out << "Assigned to group therapy " << i + 1 << endl;
+                    // out << "\tGroup size: " << clinic.groupTherapies[i].patients.size() << endl;
                     if (clinic.groupTherapies[i].patients.size() == state.k)
                     {
                         clinic.groupTherapies[i].isFull = true;
@@ -424,27 +424,27 @@ Clinic checkGroupPatients(State state, Clinic clinic, int time)
             }
         }
     }
-    // cout << "test" << endl;
+    // out << "test" << endl;
     wasAdded = false;
     size = clinic.patients.size(); // checking the patients queue and adding patients through it
     if (size > 0)
     {
         if (!clinic.patients.front().isIndividual)
         {
-            cout << "\tAtvyko P" << clinic.patients.front().ID << ". Pacientas nori grupines terapijos." << endl;
+            out << "\tAtvyko P" << clinic.patients.front().ID << ". Pacientas nori grupines terapijos." << endl;
             int id;
             for (int i = maxGroup(state, clinic, true); i < state.n; i++)
             {
                 if (clinic.groupTherapies[i].patients.size() < state.k && clinic.patients.front().firstTime == true && clinic.groupTherapies[i].isForFirstTime)
                 {
-                    // cout << "Adding from patients list" << endl;
+                    // out << "Adding from patients list" << endl;
                     clinic.groupTherapies[i].patients.push_back(clinic.patients.front());
                     clinic.groupTherapies[i].isForFirstTime = true;
-                    cout << "\tP" << clinic.patients.front().ID << " yra priskirtas prie grupes " << i + 1 << ". Jos dydis = " << clinic.groupTherapies[i].patients.size() << " pacientai(-as)." << endl;
+                    out << "\tP" << clinic.patients.front().ID << " yra priskirtas prie grupes " << i + 1 << ". Jos dydis = " << clinic.groupTherapies[i].patients.size() << " pacientai(-as)." << endl;
                     clinic.patients.pop();
                     wasAdded = true;
-                    // cout << "Assigned to group therapy " << i + 1 << endl;
-                    // cout << "Grupes " << i+1 << " dydis = " << clinic.groupTherapies[i].patients.size() << endl;
+                    // out << "Assigned to group therapy " << i + 1 << endl;
+                    // out << "Grupes " << i+1 << " dydis = " << clinic.groupTherapies[i].patients.size() << endl;
                     if (clinic.groupTherapies[i].patients.size() == state.k)
                     {
                         clinic.groupTherapies[i].isFull = true;
@@ -453,14 +453,14 @@ Clinic checkGroupPatients(State state, Clinic clinic, int time)
                 }
                 if (!wasAdded)
                     id = clinic.patients.front().ID;
-                // cout << "\tP" << clinic.patients.front().ID << " turi laukt eileje." << endl;
+                // out << "\tP" << clinic.patients.front().ID << " turi laukt eileje." << endl;
 
                 // TODO In group therapy add a check for when patients are returning (make return only groups)
             }
             if (!wasAdded)
             {
-                cout << "\tP" << clinic.patients.front().ID << " turi laukt eileje." << endl;
-                // cout << "\tPatient was not added" << endl;
+                out << "\tP" << clinic.patients.front().ID << " turi laukt eileje." << endl;
+                // out << "\tPatient was not added" << endl;
                 clinic.groupWaiting.push(clinic.patients.front());
                 clinic.patients.pop();
             }
@@ -489,11 +489,11 @@ Revenue simulate(State state)
     int patients = 0;
     while (time <= state.sim_hours)
     {
-        cout << "T= " << time << '.' << endl;
+        out << "T= " << time << '.' << endl;
         // new patient
         if (rand_prob(state.p1))
         {
-            // cout << "New patient arrived" << endl;
+            // out << "New patient arrived" << endl;
             patients++;
             Patient patient = {
                 .ID = patientID,
@@ -503,7 +503,7 @@ Revenue simulate(State state)
                 .timeInTherapy = 0,
             };
             patientID++;
-            // cout << "Is indiv: " << endl;
+            // out << "Is indiv: " << endl;
 
             if (patient.isIndividual)
                 patient.neededTherapyTime = state.InN;
@@ -513,27 +513,27 @@ Revenue simulate(State state)
             if (patient.willHealFaster && !patient.isIndividual && state.GrN > 1)
             {
                 patient.neededTherapyTime = state.GrN * (state.h / 100.0);
-                // cout << "NEEDED THERAPY TIME (group): " << patient.neededTherapyTime << endl;
+                // out << "NEEDED THERAPY TIME (group): " << patient.neededTherapyTime << endl;
             }
             clinic.patients.push(patient);
-            // cout << "Patient pushed." << endl;
+            // out << "Patient pushed." << endl;
         }
 
         // deal with individual therapy patients
         clinic = checkIndividualPatients(state, clinic, time);
         for (int i = 0; i < state.m; i++) // individual therapies
         {
-            // cout << "ID: " << i << " | has started? " << clinic.individualTherapies[i].hasStarted << " | is full? " << clinic.individualTherapies[i].isFull << endl;
+            // out << "ID: " << i << " | has started? " << clinic.individualTherapies[i].hasStarted << " | is full? " << clinic.individualTherapies[i].isFull << endl;
             if (clinic.individualTherapies[i].isFull && !clinic.individualTherapies[i].hasStarted)
             {
-                cout << "\tPrivati terapija su P" << clinic.individualTherapies[i].patient.ID << " prasidejo. Privataus specialisto ID: " << i + 1 << '.' << endl;
+                out << "\tPrivati terapija su P" << clinic.individualTherapies[i].patient.ID << " prasidejo. Privataus specialisto ID: " << i + 1 << '.' << endl;
                 clinic.individualTherapies[i].hasStarted = true;
                 clinic.individualTherapies[i].startTime = time;
                 clinic.individualTherapies[i].endTime = time + state.InT;
             }
             else if (clinic.individualTherapies[i].hasStarted && time == clinic.individualTherapies[i].endTime)
             {
-                cout << "\tPrivati terapija su P" << clinic.individualTherapies[i].patient.ID << " pasibaige. Privataus specialisto ID: " << i + 1 << '.' << endl;
+                out << "\tPrivati terapija su P" << clinic.individualTherapies[i].patient.ID << " pasibaige. Privataus specialisto ID: " << i + 1 << '.' << endl;
                 clinic.individualTherapies[i].hasStarted = false;
                 clinic.individualTherapies[i].isFull = false;
                 clinic.individualTherapies[i].patient.timeInTherapy++;
@@ -545,12 +545,12 @@ Revenue simulate(State state)
                 }
                 else if (clinic.individualTherapies[i].patient.timeInTherapy == state.InN)
                 {
-                    cout << "\tP" << clinic.individualTherapies[i].patient.ID << " pasveiko." << endl;
+                    out << "\tP" << clinic.individualTherapies[i].patient.ID << " pasveiko." << endl;
                     clinic.isWell++;
                     revenue.InR += state.InK;
                 }
             }
-            // cout << "ID: " << i << " | has started? " << clinic.individualTherapies[i].hasStarted << " | is full? " << clinic.individualTherapies[i].isFull << endl;
+            // out << "ID: " << i << " | has started? " << clinic.individualTherapies[i].hasStarted << " | is full? " << clinic.individualTherapies[i].isFull << endl;
         }
 
         clinic = checkGroupPatients(state, clinic, time);
@@ -577,15 +577,15 @@ Revenue simulate(State state)
                         for (int i = 0; i < size; i++)
                         {
                             // if (clinic.returningP.front().whenToReturn == time)
-                            //     cout << "Patient (ID: " << clinic.returningP.front().ID << ") returning to group therapy" << endl;
+                            //     out << "Patient (ID: " << clinic.returningP.front().ID << ") returning to group therapy" << endl;
                             if ((clinic.groupTherapies[j].patients.size() == 0 && clinic.returningP.front().whenToReturn == time) || (clinic.groupTherapies[j].patients.size() < state.nK && clinic.groupTherapies[j].isForFirstTime == false && clinic.returningP.front().whenToReturn == time))
                             {
                                 clinic.groupTherapies[j].patients.push_back(clinic.returningP.front());
                                 clinic.groupTherapies[j].isForFirstTime = false;
-                                cout << "\tP" << clinic.returningP.front().ID << " priskiriamas prie grupes " << j + 1 << ". Jos dydis: " << clinic.groupTherapies[j].patients.size() << " pacientai(-as)." << endl;
+                                out << "\tP" << clinic.returningP.front().ID << " priskiriamas prie grupes " << j + 1 << ". Jos dydis: " << clinic.groupTherapies[j].patients.size() << " pacientai(-as)." << endl;
                                 clinic.returningP.pop();
                                 wasAdded = true;
-                                // cout << "\tGroup size: " << clinic.groupTherapies[j].patients.size() << endl;
+                                // out << "\tGroup size: " << clinic.groupTherapies[j].patients.size() << endl;
                                 if (clinic.groupTherapies[j].patients.size() == state.nK)
                                 {
                                     clinic.groupTherapies[j].isFull = true;
@@ -594,7 +594,7 @@ Revenue simulate(State state)
                         }
                     }
                     // if (!wasAdded && clinic.returningP.front().whenToReturn == time)
-                    // cout << "\tReturning patient not added" << endl;
+                    // out << "\tReturning patient not added" << endl;
                 }
             }
         }
@@ -607,14 +607,14 @@ Revenue simulate(State state)
         {
             if (clinic.groupTherapies[i].isFull && !clinic.groupTherapies[i].hasStarted)
             {
-                cout << "\tGrupine terapija prasidejo. Grupes nr: " << i + 1 << '.' << endl;
+                out << "\tGrupine terapija prasidejo. Grupes nr: " << i + 1 << '.' << endl;
                 clinic.groupTherapies[i].hasStarted = true;
                 clinic.groupTherapies[i].startTime = time;
                 clinic.groupTherapies[i].endTime = time + state.GrT;
             }
             else if (clinic.groupTherapies[i].hasStarted && time == clinic.groupTherapies[i].endTime)
             {
-                cout << "\tGrupine terapija pasibaige. Grupes nr: " << i + 1 << '.' << endl;
+                out << "\tGrupine terapija pasibaige. Grupes nr: " << i + 1 << '.' << endl;
                 clinic.groupTherapies[i].hasStarted = false;
                 clinic.groupTherapies[i].isFull = false;
                 clinic.groupTherapies[i].isForFirstTime = true;
@@ -633,7 +633,7 @@ Revenue simulate(State state)
                         }
                         else if (clinic.groupTherapies[i].patients[j].timeInTherapy == state.GrN)
                         {
-                            cout << "\tP" << clinic.groupTherapies[i].patients[j].ID << " pasveiko." << endl;
+                            out << "\tP" << clinic.groupTherapies[i].patients[j].ID << " pasveiko." << endl;
                             clinic.isWell++;
                             revenue.GrR += state.GrK;
                         }
@@ -648,7 +648,7 @@ Revenue simulate(State state)
                         }
                         else if (clinic.groupTherapies[i].patients[j].timeInTherapy == fastHeal)
                         {
-                            cout << "\tP" << clinic.groupTherapies[i].patients[j].ID << " pasveiko." << endl;
+                            out << "\tP" << clinic.groupTherapies[i].patients[j].ID << " pasveiko." << endl;
                             clinic.isWell++;
                             revenue.GrR += state.GrK;
                         }
@@ -660,11 +660,11 @@ Revenue simulate(State state)
         }
 
         ++time;
-        cout << endl;
+        out << endl;
     }
     getWaitAndReturnList(state, clinic);
-    cout << "Grupiniu terapiju pelnas \t\t\t\t= " << revenue.GrR << "eur." << endl;
-    cout << "Privaciu terapiju pelnas \t\t\t\t= " << revenue.InR << "eur." << endl << endl;
+    out << "Grupiniu terapiju pelnas \t\t\t\t= " << revenue.GrR << "eur." << endl;
+    out << "Privaciu terapiju pelnas \t\t\t\t= " << revenue.InR << "eur." << endl << endl;
     printNeededSpecialists(state,clinic);
     // getClinicData(clinic);
     return revenue;
@@ -691,7 +691,7 @@ int main()
         .sim_hours = 100,
     };
     Revenue r = simulate(s);
-    // cout << "Grupiniu terapiju pelnas =\t\t\t\t" << r.GrR << "eur." << endl;
-    // cout << "Privaciu terapiju pelnas =\t\t\t\t" << r.InR << "eur." << endl;
+    // out << "Grupiniu terapiju pelnas =\t\t\t\t" << r.GrR << "eur." << endl;
+    // out << "Privaciu terapiju pelnas =\t\t\t\t" << r.InR << "eur." << endl;
     return 0;
 }
