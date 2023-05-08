@@ -1,0 +1,737 @@
+ADS 3 uzduotis. 10 variantas: Apsilankymas pas psichologa.
+Olen Rackauskas. 3 grupe, 2 pogrupis.
+
+SALYGA: Psichologo konsultacijas teikia keli specialistai, dalis ju (n) formuoja terapines grupes is k zmoniu, kiti (m) priima pacientus individualiai. Grupines terapijos trukme zymima GrT, o privacios terapijos trukme zymima InT (laikas valandomis). Kiekvienas naujai atejes pacientas (naujo paciento pasirodymo tikimybe p1, pakartotinai pacientai ateina po tam tikro laiko d) gali pasirinkti ar apsilankyti pas psichologa, teikianti individualia paslauga, ar pas grupines konsultacijas. Kol pas psichologa teikianti grupine konsultacija susirenka grupe i ja pretenduojantys pacientai turi laukti. Pakartotinai ateje pacientai, pas savo psichologa gali rinktis ir mazesnem grupem, taciau negali eiti kartu su naujokais. Yra pastebeta, kad individualiai priimami pacientai sveiksta greiciau, nei dirbantys grupeje (jiems reikia maziau konsultaciju), taciau pasitaiko isimciu, del socialinio bendravimo faktoriaus, kai kurie pacientai (tikimybe p2) pasveiksta h procentu greiciau, nei konsultuojami individualiai. Individuli konsultacija kainuoja InK litu, grupine GrK litu. Reikia ivertinti, koki terapijos metoda turetu pasirinkti pacientas optimizuodamas savo isteklius, bei kiek ir kokiu specialistu turetu samdyti sveikatos prieziuros istaiga.DALIS 1. Ivesti rodikliai.
+Proceso trukme:							100 val.
+Privaciu psichologu skaicius:					  1 privatus psicholog.
+Grupiniu psichologu skaicius:					  2 grupes psicholog.
+Privacios terapijos trukme:					  2 val.
+Grupines terapijos trukme:					  5 val.
+Pacientu skaicius grupeje (nauji pacientai):			  5 pacient.
+Pacientu skaicius grupeje (pakartotinai ateinantys pacientai):	  3 pacient.
+Po kiek laiko grizta pacientai:					  2 val.
+Tikimybe, kad ateis naujas pacientas:				 70 %.
+Tikimybe, kad pacientas pasveiks greiciau:			 50 %.
+Tikimybe ant kiek greiciau pasveiks pacientas:			 80 %.
+Tikimybe, kad pacientas pasirinks privacia terapija:		 50 %.
+Kiek kartu reikia nueiti i grupines terapijas:			  2 kart.
+Kiek kartu reikia nueiti i privacias terapijas:			  2 kart.
+Privacios terapijos kaina:					 20 eur.
+Grupines terapijos kaina:					 10 eur.
+
+DALIS 2. Protokolas.
+T= 0 val.
+
+T= 1 val.
+	Atvyko pacientas P1 ir nori grupines terapijos.
+	P1 yra priskirtas prie grupes G1. Jos dydis = 1 pacient.
+	Grupes G1 pacientai: P1.
+
+T= 2 val.
+	Grupes G1 pacientai: P1.
+
+T= 3 val.
+	Atvyko pacientas P2 ir nori privacios terapijos.
+	Privati terapija su P2 prasidejo pas privatu psichologa 1.
+	Grupes G1 pacientai: P1.
+
+T= 4 val.
+	Atvyko pacientas P3 ir nori privacios terapijos.
+	P3 atsistojo i eile.
+	Grupes G1 pacientai: P1.
+	Privacios terapijos eile: P3.
+
+T= 5 val.
+	Privati terapija su P2 pasibaige pas privatu psichologa 1.
+	Atvyko pacientas P4 ir nori grupines terapijos.
+	P4 yra priskirtas prie grupes G1. Jos dydis = 2 pacient.
+	Grupes G1 pacientai: P1, P4.
+	Privacios terapijos eile: P3.
+
+T= 6 val.
+	Privati terapija su P3 prasidejo pas privatu psichologa 1.
+	Grupes G1 pacientai: P1, P4.
+
+T= 7 val.
+	Atvyko pacientas P2(pakartotinai) ir nori privacios terapijos.
+	P2 atsistojo i eile.
+	Atvyko pacientas P5 ir nori grupines terapijos.
+	P5 yra priskirtas prie grupes G1. Jos dydis = 3 pacient.
+	Grupes G1 pacientai: P1, P4, P5.
+	Privacios terapijos eile: P2.
+
+T= 8 val.
+	Privati terapija su P3 pasibaige pas privatu psichologa 1.
+	Atvyko pacientas P6 ir nori grupines terapijos.
+	P6 yra priskirtas prie grupes G1. Jos dydis = 4 pacient.
+	Grupes G1 pacientai: P1, P4, P5, P6.
+	Privacios terapijos eile: P2.
+
+T= 9 val.
+	Atvyko pacientas P7 ir nori privacios terapijos.
+	P7 atsistojo i eile.
+	Privati terapija su P2 prasidejo pas privatu psichologa 1.
+	Grupes G1 pacientai: P1, P4, P5, P6.
+	Privacios terapijos eile: P7.
+
+T= 10 val.
+	Atvyko pacientas P3(pakartotinai) ir nori privacios terapijos.
+	P3 atsistojo i eile.
+	Atvyko pacientas P8 ir nori grupines terapijos.
+	P8 yra priskirtas prie grupes G1. Jos dydis = 5 pacient.
+	Grupes G1 pacientai: P1, P4, P5, P6, P8.
+	Privacios terapijos eile: P7, P3.
+	Grupine G1 terapija prasidejo.
+
+T= 11 val.
+	Atvyko pacientas P9 ir nori privacios terapijos.
+	P9 atsistojo i eile.
+	Privati terapija su P2 pasibaige pas privatu psichologa 1.
+	P2 pasveiko.
+	Grupes G1 pacientai: P1, P4, P5, P6, P8.
+	Privacios terapijos eile: P7, P3, P9.
+
+T= 12 val.
+	Privati terapija su P7 prasidejo pas privatu psichologa 1.
+	Atvyko pacientas P10 ir nori grupines terapijos.
+	P10 yra priskirtas prie grupes G2. Jos dydis = 1 pacient.
+	Grupes G1 pacientai: P1, P4, P5, P6, P8.
+	Grupes G2 pacientai: P10.
+	Privacios terapijos eile: P3, P9.
+
+T= 13 val.
+	Atvyko pacientas P11 ir nori grupines terapijos.
+	P11 yra priskirtas prie grupes G2. Jos dydis = 2 pacient.
+	Grupes G1 pacientai: P1, P4, P5, P6, P8.
+	Grupes G2 pacientai: P10, P11.
+	Privacios terapijos eile: P3, P9.
+
+T= 14 val.
+	Privati terapija su P7 pasibaige pas privatu psichologa 1.
+	Atvyko pacientas P12 ir nori grupines terapijos.
+	P12 yra priskirtas prie grupes G2. Jos dydis = 3 pacient.
+	Grupes G1 pacientai: P1, P4, P5, P6, P8.
+	Grupes G2 pacientai: P10, P11, P12.
+	Privacios terapijos eile: P3, P9.
+
+T= 15 val.
+	Privati terapija su P3 prasidejo pas privatu psichologa 1.
+	Grupes G1 pacientai: P1, P4, P5, P6, P8.
+	Grupes G2 pacientai: P10, P11, P12.
+	Privacios terapijos eile: P9.
+	Grupine G1 terapija pasibaige.
+	P1 pasveiko.
+	P4 pasveiko.
+	P5 pasveiko.
+
+T= 16 val.
+	Atvyko pacientas P13 ir nori privacios terapijos.
+	P13 atsistojo i eile.
+	Atvyko pacientas P7(pakartotinai) ir nori privacios terapijos.
+	P7 atsistojo i eile.
+	Grupes G2 pacientai: P10, P11, P12.
+	Privacios terapijos eile: P9, P13, P7.
+
+T= 17 val.
+	Privati terapija su P3 pasibaige pas privatu psichologa 1.
+	P3 pasveiko.
+	Atvyko pacientas P14 ir nori grupines terapijos.
+	P14 yra priskirtas prie grupes G2. Jos dydis = 4 pacient.
+	Grupes G2 pacientai: P10, P11, P12, P14.
+	Privacios terapijos eile: P9, P13, P7.
+	P6 priskiriamas prie grupes G1. Jos dydis: 1 pacient.
+	P8 priskiriamas prie grupes G1. Jos dydis: 2 pacient.
+
+T= 18 val.
+	Privati terapija su P9 prasidejo pas privatu psichologa 1.
+	Atvyko pacientas P15 ir nori grupines terapijos.
+	P15 yra priskirtas prie grupes G2. Jos dydis = 5 pacient.
+	Grupes G1 pacientai: P6, P8.
+	Grupes G2 pacientai: P10, P11, P12, P14, P15.
+	Privacios terapijos eile: P13, P7.
+	Grupine G2 terapija prasidejo.
+
+T= 19 val.
+	Atvyko pacientas P16 ir nori privacios terapijos.
+	P16 atsistojo i eile.
+	Grupes G1 pacientai: P6, P8.
+	Grupes G2 pacientai: P10, P11, P12, P14, P15.
+	Privacios terapijos eile: P13, P7, P16.
+
+T= 20 val.
+	Privati terapija su P9 pasibaige pas privatu psichologa 1.
+	Atvyko pacientas P17 ir nori grupines terapijos.
+	P17 atsistojo i eile.
+	Grupes G1 pacientai: P6, P8.
+	Grupes G2 pacientai: P10, P11, P12, P14, P15.
+	Grupines terapijos eile: P17.
+	Privacios terapijos eile: P13, P7, P16.
+
+T= 21 val.
+	Privati terapija su P13 prasidejo pas privatu psichologa 1.
+	Atvyko pacientas P18 ir nori grupines terapijos.
+	P18 atsistojo i eile.
+	Grupes G1 pacientai: P6, P8.
+	Grupes G2 pacientai: P10, P11, P12, P14, P15.
+	Grupines terapijos eile: P17, P18.
+	Privacios terapijos eile: P7, P16.
+
+T= 22 val.
+	Atvyko pacientas P9(pakartotinai) ir nori privacios terapijos.
+	P9 atsistojo i eile.
+	Grupes G1 pacientai: P6, P8.
+	Grupes G2 pacientai: P10, P11, P12, P14, P15.
+	Grupines terapijos eile: P17, P18.
+	Privacios terapijos eile: P7, P16, P9.
+
+T= 23 val.
+	Privati terapija su P13 pasibaige pas privatu psichologa 1.
+	Grupes G1 pacientai: P6, P8.
+	Grupes G2 pacientai: P10, P11, P12, P14, P15.
+	Grupines terapijos eile: P17, P18.
+	Privacios terapijos eile: P7, P16, P9.
+	Grupine G2 terapija pasibaige.
+	P11 pasveiko.
+	P14 pasveiko.
+	P15 pasveiko.
+
+T= 24 val.
+	Privati terapija su P7 prasidejo pas privatu psichologa 1.
+	P17 yra priskirtas prie grupes G2. Jos dydis = 1 pacient.
+	P18 yra priskirtas prie grupes G2. Jos dydis = 2 pacient.
+	Atvyko pacientas P19 ir nori grupines terapijos.
+	P19 yra priskirtas prie grupes G2. Jos dydis = 3 pacient.
+	Grupes G1 pacientai: P6, P8.
+	Grupes G2 pacientai: P17, P18, P19.
+	Privacios terapijos eile: P16, P9.
+
+T= 25 val.
+	Atvyko pacientas P20 ir nori privacios terapijos.
+	P20 atsistojo i eile.
+	Atvyko pacientas P13(pakartotinai) ir nori privacios terapijos.
+	P13 atsistojo i eile.
+	Grupes G1 pacientai: P6, P8.
+	Grupes G2 pacientai: P17, P18, P19.
+	Privacios terapijos eile: P16, P9, P20, P13.
+	P10 priskiriamas prie grupes G1. Jos dydis: 3 pacient.
+	Grupine G1 terapija prasidejo.
+
+T= 26 val.
+	Privati terapija su P7 pasibaige pas privatu psichologa 1.
+	P7 pasveiko.
+	Grupes G1 pacientai: P6, P8, P10.
+	Grupes G2 pacientai: P17, P18, P19.
+	Privacios terapijos eile: P16, P9, P20, P13.
+
+T= 27 val.
+	Privati terapija su P16 prasidejo pas privatu psichologa 1.
+	Grupes G1 pacientai: P6, P8, P10.
+	Grupes G2 pacientai: P17, P18, P19.
+	Privacios terapijos eile: P9, P20, P13.
+
+T= 28 val.
+	Atvyko pacientas P21 ir nori privacios terapijos.
+	P21 atsistojo i eile.
+	Grupes G1 pacientai: P6, P8, P10.
+	Grupes G2 pacientai: P17, P18, P19.
+	Privacios terapijos eile: P9, P20, P13, P21.
+
+T= 29 val.
+	Privati terapija su P16 pasibaige pas privatu psichologa 1.
+	Atvyko pacientas P22 ir nori grupines terapijos.
+	P22 yra priskirtas prie grupes G2. Jos dydis = 4 pacient.
+	Grupes G1 pacientai: P6, P8, P10.
+	Grupes G2 pacientai: P17, P18, P19, P22.
+	Privacios terapijos eile: P9, P20, P13, P21.
+
+T= 30 val.
+	Privati terapija su P9 prasidejo pas privatu psichologa 1.
+	Grupes G1 pacientai: P6, P8, P10.
+	Grupes G2 pacientai: P17, P18, P19, P22.
+	Privacios terapijos eile: P20, P13, P21.
+	Grupine G1 terapija pasibaige.
+	P6 pasveiko.
+	P8 pasveiko.
+	P10 pasveiko.
+
+T= 31 val.
+	Atvyko pacientas P23 ir nori privacios terapijos.
+	P23 atsistojo i eile.
+	Grupes G2 pacientai: P17, P18, P19, P22.
+	Privacios terapijos eile: P20, P13, P21, P23.
+
+T= 32 val.
+	Privati terapija su P9 pasibaige pas privatu psichologa 1.
+	P9 pasveiko.
+	Grupes G2 pacientai: P17, P18, P19, P22.
+	Privacios terapijos eile: P20, P13, P21, P23.
+
+T= 33 val.
+	Atvyko pacientas P24 ir nori privacios terapijos.
+	P24 atsistojo i eile.
+	Privati terapija su P20 prasidejo pas privatu psichologa 1.
+	Grupes G2 pacientai: P17, P18, P19, P22.
+	Privacios terapijos eile: P13, P21, P23, P24.
+
+T= 34 val.
+	Grupes G2 pacientai: P17, P18, P19, P22.
+	Privacios terapijos eile: P13, P21, P23, P24.
+
+T= 35 val.
+	Privati terapija su P20 pasibaige pas privatu psichologa 1.
+	Atvyko pacientas P25 ir nori grupines terapijos.
+	P25 yra priskirtas prie grupes G2. Jos dydis = 5 pacient.
+	Grupes G2 pacientai: P17, P18, P19, P22, P25.
+	Privacios terapijos eile: P13, P21, P23, P24.
+	Grupine G2 terapija prasidejo.
+
+T= 36 val.
+	Atvyko pacientas P26 ir nori privacios terapijos.
+	P26 atsistojo i eile.
+	Privati terapija su P13 prasidejo pas privatu psichologa 1.
+	Grupes G2 pacientai: P17, P18, P19, P22, P25.
+	Privacios terapijos eile: P21, P23, P24, P26.
+
+T= 37 val.
+	Atvyko pacientas P27 ir nori privacios terapijos.
+	P27 atsistojo i eile.
+	Grupes G2 pacientai: P17, P18, P19, P22, P25.
+	Privacios terapijos eile: P21, P23, P24, P26, P27.
+
+T= 38 val.
+	Atvyko pacientas P28 ir nori privacios terapijos.
+	P28 atsistojo i eile.
+	Privati terapija su P13 pasibaige pas privatu psichologa 1.
+	P13 pasveiko.
+	Grupes G2 pacientai: P17, P18, P19, P22, P25.
+	Privacios terapijos eile: P21, P23, P24, P26, P27, P28.
+
+T= 39 val.
+	Privati terapija su P21 prasidejo pas privatu psichologa 1.
+	Grupes G2 pacientai: P17, P18, P19, P22, P25.
+	Privacios terapijos eile: P23, P24, P26, P27, P28.
+
+T= 40 val.
+	Grupes G2 pacientai: P17, P18, P19, P22, P25.
+	Privacios terapijos eile: P23, P24, P26, P27, P28.
+	Grupine G2 terapija pasibaige.
+	P17 pasveiko.
+	P18 pasveiko.
+	P19 pasveiko.
+
+T= 41 val.
+	Privati terapija su P21 pasibaige pas privatu psichologa 1.
+	Atvyko pacientas P29 ir nori grupines terapijos.
+	P29 yra priskirtas prie grupes G1. Jos dydis = 1 pacient.
+	Grupes G1 pacientai: P29.
+	Privacios terapijos eile: P23, P24, P26, P27, P28.
+
+T= 42 val.
+	Privati terapija su P23 prasidejo pas privatu psichologa 1.
+	Atvyko pacientas P30 ir nori grupines terapijos.
+	P30 yra priskirtas prie grupes G1. Jos dydis = 2 pacient.
+	Grupes G1 pacientai: P29, P30.
+	Privacios terapijos eile: P24, P26, P27, P28.
+
+T= 43 val.
+	Atvyko pacientas P31 ir nori privacios terapijos.
+	P31 atsistojo i eile.
+	Grupes G1 pacientai: P29, P30.
+	Privacios terapijos eile: P24, P26, P27, P28, P31.
+
+T= 44 val.
+	Atvyko pacientas P32 ir nori privacios terapijos.
+	P32 atsistojo i eile.
+	Privati terapija su P23 pasibaige pas privatu psichologa 1.
+	Grupes G1 pacientai: P29, P30.
+	Privacios terapijos eile: P24, P26, P27, P28, P31, P32.
+
+T= 45 val.
+	Atvyko pacientas P33 ir nori privacios terapijos.
+	P33 atsistojo i eile.
+	Privati terapija su P24 prasidejo pas privatu psichologa 1.
+	Grupes G1 pacientai: P29, P30.
+	Privacios terapijos eile: P26, P27, P28, P31, P32, P33.
+
+T= 46 val.
+	Grupes G1 pacientai: P29, P30.
+	Privacios terapijos eile: P26, P27, P28, P31, P32, P33.
+
+T= 47 val.
+	Atvyko pacientas P34 ir nori privacios terapijos.
+	P34 atsistojo i eile.
+	Privati terapija su P24 pasibaige pas privatu psichologa 1.
+	Grupes G1 pacientai: P29, P30.
+	Privacios terapijos eile: P26, P27, P28, P31, P32, P33, P34.
+
+T= 48 val.
+	Privati terapija su P26 prasidejo pas privatu psichologa 1.
+	Atvyko pacientas P35 ir nori grupines terapijos.
+	P35 yra priskirtas prie grupes G1. Jos dydis = 3 pacient.
+	Grupes G1 pacientai: P29, P30, P35.
+	Privacios terapijos eile: P27, P28, P31, P32, P33, P34.
+
+T= 49 val.
+	Grupes G1 pacientai: P29, P30, P35.
+	Privacios terapijos eile: P27, P28, P31, P32, P33, P34.
+
+T= 50 val.
+	Privati terapija su P26 pasibaige pas privatu psichologa 1.
+	Grupes G1 pacientai: P29, P30, P35.
+	Privacios terapijos eile: P27, P28, P31, P32, P33, P34.
+
+T= 51 val.
+	Atvyko pacientas P36 ir nori privacios terapijos.
+	P36 atsistojo i eile.
+	Privati terapija su P27 prasidejo pas privatu psichologa 1.
+	Grupes G1 pacientai: P29, P30, P35.
+	Privacios terapijos eile: P28, P31, P32, P33, P34, P36.
+
+T= 52 val.
+	Atvyko pacientas P37 ir nori privacios terapijos.
+	P37 atsistojo i eile.
+	Grupes G1 pacientai: P29, P30, P35.
+	Privacios terapijos eile: P28, P31, P32, P33, P34, P36, P37.
+
+T= 53 val.
+	Privati terapija su P27 pasibaige pas privatu psichologa 1.
+	Atvyko pacientas P38 ir nori grupines terapijos.
+	P38 yra priskirtas prie grupes G1. Jos dydis = 4 pacient.
+	Grupes G1 pacientai: P29, P30, P35, P38.
+	Privacios terapijos eile: P28, P31, P32, P33, P34, P36, P37.
+
+T= 54 val.
+	Privati terapija su P28 prasidejo pas privatu psichologa 1.
+	Grupes G1 pacientai: P29, P30, P35, P38.
+	Privacios terapijos eile: P31, P32, P33, P34, P36, P37.
+
+T= 55 val.
+	Grupes G1 pacientai: P29, P30, P35, P38.
+	Privacios terapijos eile: P31, P32, P33, P34, P36, P37.
+
+T= 56 val.
+	Atvyko pacientas P39 ir nori privacios terapijos.
+	P39 atsistojo i eile.
+	Privati terapija su P28 pasibaige pas privatu psichologa 1.
+	Grupes G1 pacientai: P29, P30, P35, P38.
+	Privacios terapijos eile: P31, P32, P33, P34, P36, P37, P39.
+
+T= 57 val.
+	Atvyko pacientas P40 ir nori privacios terapijos.
+	P40 atsistojo i eile.
+	Privati terapija su P31 prasidejo pas privatu psichologa 1.
+	Grupes G1 pacientai: P29, P30, P35, P38.
+	Privacios terapijos eile: P32, P33, P34, P36, P37, P39, P40.
+
+T= 58 val.
+	Atvyko pacientas P41 ir nori privacios terapijos.
+	P41 atsistojo i eile.
+	Grupes G1 pacientai: P29, P30, P35, P38.
+	Privacios terapijos eile: P32, P33, P34, P36, P37, P39, P40, P41.
+
+T= 59 val.
+	Privati terapija su P31 pasibaige pas privatu psichologa 1.
+	Atvyko pacientas P42 ir nori grupines terapijos.
+	P42 yra priskirtas prie grupes G1. Jos dydis = 5 pacient.
+	Grupes G1 pacientai: P29, P30, P35, P38, P42.
+	Privacios terapijos eile: P32, P33, P34, P36, P37, P39, P40, P41.
+	Grupine G1 terapija prasidejo.
+
+T= 60 val.
+	Privati terapija su P32 prasidejo pas privatu psichologa 1.
+	Grupes G1 pacientai: P29, P30, P35, P38, P42.
+	Privacios terapijos eile: P33, P34, P36, P37, P39, P40, P41.
+
+T= 61 val.
+	Atvyko pacientas P43 ir nori grupines terapijos.
+	P43 yra priskirtas prie grupes G2. Jos dydis = 1 pacient.
+	Grupes G1 pacientai: P29, P30, P35, P38, P42.
+	Grupes G2 pacientai: P43.
+	Privacios terapijos eile: P33, P34, P36, P37, P39, P40, P41.
+
+T= 62 val.
+	Privati terapija su P32 pasibaige pas privatu psichologa 1.
+	Atvyko pacientas P44 ir nori grupines terapijos.
+	P44 yra priskirtas prie grupes G2. Jos dydis = 2 pacient.
+	Grupes G1 pacientai: P29, P30, P35, P38, P42.
+	Grupes G2 pacientai: P43, P44.
+	Privacios terapijos eile: P33, P34, P36, P37, P39, P40, P41.
+
+T= 63 val.
+	Atvyko pacientas P45 ir nori privacios terapijos.
+	P45 atsistojo i eile.
+	Privati terapija su P33 prasidejo pas privatu psichologa 1.
+	Grupes G1 pacientai: P29, P30, P35, P38, P42.
+	Grupes G2 pacientai: P43, P44.
+	Privacios terapijos eile: P34, P36, P37, P39, P40, P41, P45.
+
+T= 64 val.
+	Atvyko pacientas P46 ir nori privacios terapijos.
+	P46 atsistojo i eile.
+	Grupes G1 pacientai: P29, P30, P35, P38, P42.
+	Grupes G2 pacientai: P43, P44.
+	Privacios terapijos eile: P34, P36, P37, P39, P40, P41, P45, P46.
+	Grupine G1 terapija pasibaige.
+	P29 pasveiko.
+	P38 pasveiko.
+
+T= 65 val.
+	Privati terapija su P33 pasibaige pas privatu psichologa 1.
+	Atvyko pacientas P47 ir nori grupines terapijos.
+	P47 yra priskirtas prie grupes G2. Jos dydis = 3 pacient.
+	Grupes G2 pacientai: P43, P44, P47.
+	Privacios terapijos eile: P34, P36, P37, P39, P40, P41, P45, P46.
+
+T= 66 val.
+	Atvyko pacientas P48 ir nori privacios terapijos.
+	P48 atsistojo i eile.
+	Privati terapija su P34 prasidejo pas privatu psichologa 1.
+	Grupes G2 pacientai: P43, P44, P47.
+	Privacios terapijos eile: P36, P37, P39, P40, P41, P45, P46, P48.
+
+T= 67 val.
+	Atvyko pacientas P49 ir nori grupines terapijos.
+	P49 yra priskirtas prie grupes G2. Jos dydis = 4 pacient.
+	Grupes G2 pacientai: P43, P44, P47, P49.
+	Privacios terapijos eile: P36, P37, P39, P40, P41, P45, P46, P48.
+
+T= 68 val.
+	Privati terapija su P34 pasibaige pas privatu psichologa 1.
+	Atvyko pacientas P50 ir nori grupines terapijos.
+	P50 yra priskirtas prie grupes G2. Jos dydis = 5 pacient.
+	Grupes G2 pacientai: P43, P44, P47, P49, P50.
+	Privacios terapijos eile: P36, P37, P39, P40, P41, P45, P46, P48.
+	Grupine G2 terapija prasidejo.
+
+T= 69 val.
+	Privati terapija su P36 prasidejo pas privatu psichologa 1.
+	Atvyko pacientas P51 ir nori grupines terapijos.
+	P51 yra priskirtas prie grupes G1. Jos dydis = 1 pacient.
+	Grupes G1 pacientai: P51.
+	Grupes G2 pacientai: P43, P44, P47, P49, P50.
+	Privacios terapijos eile: P37, P39, P40, P41, P45, P46, P48.
+
+T= 70 val.
+	Atvyko pacientas P52 ir nori privacios terapijos.
+	P52 atsistojo i eile.
+	Grupes G1 pacientai: P51.
+	Grupes G2 pacientai: P43, P44, P47, P49, P50.
+	Privacios terapijos eile: P37, P39, P40, P41, P45, P46, P48, P52.
+
+T= 71 val.
+	Privati terapija su P36 pasibaige pas privatu psichologa 1.
+	Atvyko pacientas P53 ir nori grupines terapijos.
+	P53 yra priskirtas prie grupes G1. Jos dydis = 2 pacient.
+	Grupes G1 pacientai: P51, P53.
+	Grupes G2 pacientai: P43, P44, P47, P49, P50.
+	Privacios terapijos eile: P37, P39, P40, P41, P45, P46, P48, P52.
+
+T= 72 val.
+	Privati terapija su P37 prasidejo pas privatu psichologa 1.
+	Grupes G1 pacientai: P51, P53.
+	Grupes G2 pacientai: P43, P44, P47, P49, P50.
+	Privacios terapijos eile: P39, P40, P41, P45, P46, P48, P52.
+
+T= 73 val.
+	Atvyko pacientas P54 ir nori privacios terapijos.
+	P54 atsistojo i eile.
+	Grupes G1 pacientai: P51, P53.
+	Grupes G2 pacientai: P43, P44, P47, P49, P50.
+	Privacios terapijos eile: P39, P40, P41, P45, P46, P48, P52, P54.
+	Grupine G2 terapija pasibaige.
+	P49 pasveiko.
+	P50 pasveiko.
+
+T= 74 val.
+	Privati terapija su P37 pasibaige pas privatu psichologa 1.
+	Atvyko pacientas P55 ir nori grupines terapijos.
+	P55 yra priskirtas prie grupes G1. Jos dydis = 3 pacient.
+	Grupes G1 pacientai: P51, P53, P55.
+	Privacios terapijos eile: P39, P40, P41, P45, P46, P48, P52, P54.
+
+T= 75 val.
+	Privati terapija su P39 prasidejo pas privatu psichologa 1.
+	Grupes G1 pacientai: P51, P53, P55.
+	Privacios terapijos eile: P40, P41, P45, P46, P48, P52, P54.
+
+T= 76 val.
+	Atvyko pacientas P56 ir nori privacios terapijos.
+	P56 atsistojo i eile.
+	Grupes G1 pacientai: P51, P53, P55.
+	Privacios terapijos eile: P40, P41, P45, P46, P48, P52, P54, P56.
+
+T= 77 val.
+	Atvyko pacientas P57 ir nori privacios terapijos.
+	P57 atsistojo i eile.
+	Privati terapija su P39 pasibaige pas privatu psichologa 1.
+	Grupes G1 pacientai: P51, P53, P55.
+	Privacios terapijos eile: P40, P41, P45, P46, P48, P52, P54, P56, P57.
+
+T= 78 val.
+	Privati terapija su P40 prasidejo pas privatu psichologa 1.
+	Grupes G1 pacientai: P51, P53, P55.
+	Privacios terapijos eile: P41, P45, P46, P48, P52, P54, P56, P57.
+
+T= 79 val.
+	Grupes G1 pacientai: P51, P53, P55.
+	Privacios terapijos eile: P41, P45, P46, P48, P52, P54, P56, P57.
+
+T= 80 val.
+	Privati terapija su P40 pasibaige pas privatu psichologa 1.
+	Atvyko pacientas P58 ir nori grupines terapijos.
+	P58 yra priskirtas prie grupes G1. Jos dydis = 4 pacient.
+	Grupes G1 pacientai: P51, P53, P55, P58.
+	Privacios terapijos eile: P41, P45, P46, P48, P52, P54, P56, P57.
+
+T= 81 val.
+	Privati terapija su P41 prasidejo pas privatu psichologa 1.
+	Atvyko pacientas P59 ir nori grupines terapijos.
+	P59 yra priskirtas prie grupes G1. Jos dydis = 5 pacient.
+	Grupes G1 pacientai: P51, P53, P55, P58, P59.
+	Privacios terapijos eile: P45, P46, P48, P52, P54, P56, P57.
+	Grupine G1 terapija prasidejo.
+
+T= 82 val.
+	Grupes G1 pacientai: P51, P53, P55, P58, P59.
+	Privacios terapijos eile: P45, P46, P48, P52, P54, P56, P57.
+
+T= 83 val.
+	Privati terapija su P41 pasibaige pas privatu psichologa 1.
+	Grupes G1 pacientai: P51, P53, P55, P58, P59.
+	Privacios terapijos eile: P45, P46, P48, P52, P54, P56, P57.
+
+T= 84 val.
+	Privati terapija su P45 prasidejo pas privatu psichologa 1.
+	Atvyko pacientas P60 ir nori grupines terapijos.
+	P60 yra priskirtas prie grupes G2. Jos dydis = 1 pacient.
+	Grupes G1 pacientai: P51, P53, P55, P58, P59.
+	Grupes G2 pacientai: P60.
+	Privacios terapijos eile: P46, P48, P52, P54, P56, P57.
+
+T= 85 val.
+	Atvyko pacientas P61 ir nori privacios terapijos.
+	P61 atsistojo i eile.
+	Grupes G1 pacientai: P51, P53, P55, P58, P59.
+	Grupes G2 pacientai: P60.
+	Privacios terapijos eile: P46, P48, P52, P54, P56, P57, P61.
+
+T= 86 val.
+	Privati terapija su P45 pasibaige pas privatu psichologa 1.
+	Atvyko pacientas P62 ir nori grupines terapijos.
+	P62 yra priskirtas prie grupes G2. Jos dydis = 2 pacient.
+	Grupes G1 pacientai: P51, P53, P55, P58, P59.
+	Grupes G2 pacientai: P60, P62.
+	Privacios terapijos eile: P46, P48, P52, P54, P56, P57, P61.
+	Grupine G1 terapija pasibaige.
+	P51 pasveiko.
+	P58 pasveiko.
+
+T= 87 val.
+	Atvyko pacientas P63 ir nori privacios terapijos.
+	P63 atsistojo i eile.
+	Privati terapija su P46 prasidejo pas privatu psichologa 1.
+	Grupes G2 pacientai: P60, P62.
+	Privacios terapijos eile: P48, P52, P54, P56, P57, P61, P63.
+
+T= 88 val.
+	Atvyko pacientas P64 ir nori privacios terapijos.
+	P64 atsistojo i eile.
+	Grupes G2 pacientai: P60, P62.
+	Privacios terapijos eile: P48, P52, P54, P56, P57, P61, P63, P64.
+
+T= 89 val.
+	Privati terapija su P46 pasibaige pas privatu psichologa 1.
+	Atvyko pacientas P65 ir nori grupines terapijos.
+	P65 yra priskirtas prie grupes G2. Jos dydis = 3 pacient.
+	Grupes G2 pacientai: P60, P62, P65.
+	Privacios terapijos eile: P48, P52, P54, P56, P57, P61, P63, P64.
+
+T= 90 val.
+	Atvyko pacientas P66 ir nori privacios terapijos.
+	P66 atsistojo i eile.
+	Privati terapija su P48 prasidejo pas privatu psichologa 1.
+	Grupes G2 pacientai: P60, P62, P65.
+	Privacios terapijos eile: P52, P54, P56, P57, P61, P63, P64, P66.
+
+T= 91 val.
+	Atvyko pacientas P67 ir nori privacios terapijos.
+	P67 atsistojo i eile.
+	Grupes G2 pacientai: P60, P62, P65.
+	Privacios terapijos eile: P52, P54, P56, P57, P61, P63, P64, P66, P67.
+
+T= 92 val.
+	Privati terapija su P48 pasibaige pas privatu psichologa 1.
+	Atvyko pacientas P68 ir nori grupines terapijos.
+	P68 yra priskirtas prie grupes G2. Jos dydis = 4 pacient.
+	Grupes G2 pacientai: P60, P62, P65, P68.
+	Privacios terapijos eile: P52, P54, P56, P57, P61, P63, P64, P66, P67.
+
+T= 93 val.
+	Atvyko pacientas P69 ir nori privacios terapijos.
+	P69 atsistojo i eile.
+	Privati terapija su P52 prasidejo pas privatu psichologa 1.
+	Grupes G2 pacientai: P60, P62, P65, P68.
+	Privacios terapijos eile: P54, P56, P57, P61, P63, P64, P66, P67, P69.
+
+T= 94 val.
+	Atvyko pacientas P70 ir nori privacios terapijos.
+	P70 atsistojo i eile.
+	Grupes G2 pacientai: P60, P62, P65, P68.
+	Privacios terapijos eile: P54, P56, P57, P61, P63, P64, P66, P67, P69, P70.
+
+T= 95 val.
+	Privati terapija su P52 pasibaige pas privatu psichologa 1.
+	Grupes G2 pacientai: P60, P62, P65, P68.
+	Privacios terapijos eile: P54, P56, P57, P61, P63, P64, P66, P67, P69, P70.
+
+T= 96 val.
+	Privati terapija su P54 prasidejo pas privatu psichologa 1.
+	Atvyko pacientas P71 ir nori grupines terapijos.
+	P71 yra priskirtas prie grupes G2. Jos dydis = 5 pacient.
+	Grupes G2 pacientai: P60, P62, P65, P68, P71.
+	Privacios terapijos eile: P56, P57, P61, P63, P64, P66, P67, P69, P70.
+	Grupine G2 terapija prasidejo.
+
+T= 97 val.
+	Atvyko pacientas P72 ir nori grupines terapijos.
+	P72 yra priskirtas prie grupes G1. Jos dydis = 1 pacient.
+	Grupes G1 pacientai: P72.
+	Grupes G2 pacientai: P60, P62, P65, P68, P71.
+	Privacios terapijos eile: P56, P57, P61, P63, P64, P66, P67, P69, P70.
+
+T= 98 val.
+	Atvyko pacientas P73 ir nori privacios terapijos.
+	P73 atsistojo i eile.
+	Privati terapija su P54 pasibaige pas privatu psichologa 1.
+	Grupes G1 pacientai: P72.
+	Grupes G2 pacientai: P60, P62, P65, P68, P71.
+	Privacios terapijos eile: P56, P57, P61, P63, P64, P66, P67, P69, P70, P73.
+
+T= 99 val.
+	Atvyko pacientas P74 ir nori privacios terapijos.
+	P74 atsistojo i eile.
+	Privati terapija su P56 prasidejo pas privatu psichologa 1.
+	Grupes G1 pacientai: P72.
+	Grupes G2 pacientai: P60, P62, P65, P68, P71.
+	Privacios terapijos eile: P57, P61, P63, P64, P66, P67, P69, P70, P73, P74.
+
+T= 100 val.
+	Atvyko pacientas P75 ir nori grupines terapijos.
+	P75 yra priskirtas prie grupes G1. Jos dydis = 2 pacient.
+	Grupes G1 pacientai: P72, P75.
+	Grupes G2 pacientai: P60, P62, P65, P68, P71.
+	Privacios terapijos eile: P57, P61, P63, P64, P66, P67, P69, P70, P73, P74.
+
+DALIS 3. Rezultatai.
+Atejusiu pacientu skaicius 				=  76.
+Pasveikusiu pacientu skaicius 				=  23.
+Laukianciu pacientu skaicius (grupines terapijos) 	=   0.
+Laukianciu pacientu skaicius (privacios terapijos) 	=  10.
+Sugriztanciu pacientu skaicius (grupines terapijos) 	=  12.
+Grupiniu terapiju pelnas 				= 180 eur.
+Privaciu terapiju pelnas 				= 100 eur.
+
+ISVADA. Labiau apsimoka eiti i grupines terapijas.
+
+Reikia dar 4 privaciu specialistu.
+Reikia dar 2 grupiniu specialistu.
