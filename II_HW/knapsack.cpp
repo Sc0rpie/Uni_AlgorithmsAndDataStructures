@@ -3,9 +3,11 @@
 #include <algorithm>
 #include <fstream>
 #include <iomanip>
+#include <cstring>
 
 using namespace std;
 
+const int MAX_ITEMS = 20;
 // Struct to represent an item
 struct Item
 {
@@ -13,6 +15,8 @@ struct Item
 };
 int steps = 1;
 int S;
+int totalCombinations = 0;
+int combinations[MAX_ITEMS][MAX_ITEMS];
 // Function to print the items in the knapsack, as well as the total price and weight of the knapsack
 // Option: 0 - backtrack, 1 - gilyn
 void printKnapsack(vector<Item> items, vector<int> knapsack, int option, int index, ofstream &outFull, int addedElement)
@@ -23,14 +27,17 @@ void printKnapsack(vector<Item> items, vector<int> knapsack, int option, int ind
 
     if (option == 0)
         size++;
-    for (int i = 0; i < size-1; i++)
+    for (int i = 0; i < size - 1; i++)
         outFull << '-';
 
-    outFull << "Bandoma prideti d" << addedElement+1 << ". Kuprine = "; 
+    // writeStringToFileWithNewlines("Bandoma prideti d" + to_string(addedElement + 1) + ". Kuprine = {", outFull);
+    outFull << "Bandoma prideti d" << addedElement+1 << "." << endl;
+    outFull << "\t Kuprine = ";
     outFull << "{";
 
     // Printing items in the knapsack (Kuprine = {...})
     int counter = 0;
+    int itemCounter = 0;
     for (int i = 0; i < knapsack.size(); i++)
     {
         if (knapsack[i] == 1)
@@ -41,6 +48,7 @@ void printKnapsack(vector<Item> items, vector<int> knapsack, int option, int ind
             totalPrice += items[i].value;
             totalWeight += items[i].weight;
             counter++;
+            itemCounter++;
         }
     }
     // Printing the last item in the knapsack if backtracking
@@ -52,30 +60,56 @@ void printKnapsack(vector<Item> items, vector<int> knapsack, int option, int ind
         totalPrice += items[index - 1].value;
         totalWeight += items[index - 1].weight;
     }
-    outFull << "}. ";
+    outFull << "}." << endl;
 
     // Printing th total price of the knapsack (Kaina = ...+...+...=...)
-    outFull << "Kaina = ";
+    outFull << "\t Kaina = ";
+    if (itemCounter != 1)
+        outFull << "(";
     counter = 0;
     for (int i = 0; i < knapsack.size(); i++)
     {
-        if(knapsack[i] == 1)
+        if (knapsack[i] == 1)
         {
-            if (counter != 0)
-                outFull << "+";
-            outFull << items[i].value;
-            counter++;
+            if (itemCounter != 1)
+            {
+                if (counter != 0)
+                    outFull << " + ";
+                outFull << "k" << i+1 << "=" <<items[i].value;
+                counter++;
+            }
+            else
+            {
+                if (counter != 0)
+                    outFull << "+";
+                outFull << items[i].value;
+                counter++;
+            }
         }
     }
+    
     // If backtracking (option == 0), print the last item as well
     if (option == 0)
     {
-        if (counter != 0)
+        if (itemCounter != 1)
         {
-            outFull << "+";
-            outFull << items[index - 1].value;
+            if (counter != 0)
+            {
+                outFull << " + ";
+                outFull << "k" << index << "=" << items[index - 1].value;
+            }
+        }
+        else
+        {
+            if (counter != 0)
+            {
+                outFull << "+";
+                outFull << items[index - 1].value;
+            }
         }
     }
+    if (itemCounter != 1)
+        outFull << ") ";
     // If there is only one item in the knapsack, print a dot instead of the equal sign
     // else print the equal sign and the total price
     if (counter == 1)
@@ -84,30 +118,55 @@ void printKnapsack(vector<Item> items, vector<int> knapsack, int option, int ind
         outFull << items[index - 1].value << ". ";
     else
         outFull << "=" << totalPrice << ". ";
-    
+
     // Printing the total weight of the knapsack (Svoris = ...+...+...=...)
-    outFull << "Svoris = ";
+    outFull << endl << "\t Svoris = ";
     counter = 0;
+    if (itemCounter != 1)
+        outFull << "(";
     for (int i = 0; i < knapsack.size(); i++)
     {
-        if(knapsack[i] == 1)
+        if (knapsack[i] == 1)
         {
-            if (counter != 0)
-                outFull << "+";
-            outFull << items[i].weight;
-            counter++;
+            if (itemCounter != 1)
+            {
+                if (counter != 0)
+                    outFull << " + ";
+                outFull << "s" << i+1 << "=" <<items[i].weight;
+                counter++;
+            }
+            else
+            {
+                if (counter != 0)
+                    outFull << "+";
+                outFull << items[i].weight;
+                counter++;
+            }
         }
     }
+    
     // If backtracking (option == 0), print the last item as well
     if (option == 0)
     {
-        if (counter != 0)
+        if (itemCounter != 1)
         {
-            outFull << "+";
-        outFull << items[index - 1].weight;
+            if (counter != 0)
+            {
+                outFull << " + ";
+                outFull << "s" << index << "=" << items[index - 1].weight;
+            }
         }
-            
+        else
+        {
+            if (counter != 0)
+            {
+                outFull << "+";
+                outFull << items[index - 1].weight;
+            }
+        }
     }
+    if (itemCounter != 1)
+        outFull << ") ";
     // If there is only one item in the knapsack, print a dot instead of the equal sign
     // else print the equal sign and the total weight
     if (counter == 1)
@@ -116,45 +175,106 @@ void printKnapsack(vector<Item> items, vector<int> knapsack, int option, int ind
         outFull << items[index - 1].weight << ". ";
     else
         outFull << "=" << totalWeight << ". ";
-
+    outFull << endl << "\t ";
+    // outFull << "\n\t   ";
     // If its going deeper in the tree and last knapsack item is not added, print "GILYN"
     if (option && knapsack[knapsack.size() - 1] != 1)
     {
-        outFull << " GILYN.";
+        outFull << "GILYN.";
     }
     else
     {
         // If the total weight of the knapsack is greater than the capacity of the knapsack, print "BACKTRACK"
         if (totalWeight > S)
-            outFull << " BACKTRACK, nes svoris virsija maksimuma S = " << S << '.';
+            outFull << "BACKTRACK, nes svoris virsija maksimuma S = " << S << '.';
         else
-            outFull << " BACKTRACK, parenkama kita kombinacija.";
+            outFull << "Parenkama kita kombinacija.";
     }
     outFull << endl;
 }
 
 void printAnswer(vector<Item> items, vector<int> knapsack, ofstream &outFull)
 {
-    int totalPrice = 0;
-    int totalWeight = 0;
-
-    outFull << endl << "\t\t{";
-    for (int i = 0; i < knapsack.size(); i++)
+    int totalPrice;
+    int totalWeight;
+    int size;
+    // outFull << endl << "\t\t{";
+    for (int i = 0; i < totalCombinations; i++)
     {
-        if (knapsack[i] == 1)
+        size = knapsack.size() - count(knapsack.begin(), knapsack.end(), 0);
+        size--;
+        // writeStringToFileWithNewlines("\n\t\t {", outFull);
+        // outFull << "\n\t\t {";
+        outFull << "\n\t    " << i+1 << ") {";
+        totalPrice = 0;
+        totalWeight = 0;
+        // cout << "Size: " << size << endl;
+        for (int j = 0; j < knapsack.size(); j++)
         {
-            if (i == knapsack.size()-1)
-                outFull << "d" << i + 1;
-            else
-                outFull << "d" << i + 1 << " ";
-            totalPrice += items[i].value;
-            totalWeight += items[i].weight;
+            if (combinations[i][j] == 1)
+            {
+                outFull << "d" << j+1;
+                if (size-- != 0)
+                    outFull << " ";
+                totalPrice += items[j].value;
+                totalWeight += items[j].weight;
+            }
         }
+
+        // writeStringToFileWithNewlines("}. ", outFull);
+        outFull << "}. ";
+        // outFull << "Kaina = " << totalPrice << '.' << endl;
+        // writeStringToFileWithNewlines("Kaina = ", outFull);
+        outFull << "\n\t       Kaina = ";
+        int counter = 0;
+        for (int j = 0; j < knapsack.size(); j++)
+        {
+            if (combinations[i][j] == 1)
+            {
+                if (counter != 0)
+                    // writeStringToFileWithNewlines("+", outFull);
+                    outFull << "+";
+                outFull << items[j].value;
+                counter++;
+            }
+        }
+        // If there is only one item in the knapsack, print a dot instead of the equal sign
+        // else print the equal sign and the total price
+        if (counter == 1)
+            // writeStringToFileWithNewlines(". ", outFull);
+            outFull << ". ";
+        else
+            // writeStringToFileWithNewlines("=" + to_string(totalPrice) + ". ", outFull);
+            outFull << "=" << totalPrice << ". ";
+
+        // Printing the total weight of the knapsack (Svoris = ...+...+...=...)
+        // writeStringToFileWithNewlines("Svoris = ", outFull);
+        outFull << "\n\t       Svoris = ";
+        counter = 0;
+        for (int j = 0; j < knapsack.size(); j++)
+        {
+            if (combinations[i][j] == 1)
+            {
+                if (counter != 0)
+                    // writeStringToFileWithNewlines("+", outFull);
+                    outFull << "+";
+                outFull << items[j].weight;
+                counter++;
+            }
+        }
+        // If there is only one item in the knapsack, print a dot instead of the equal sign
+        // else print the equal sign and the total weight
+        if (counter == 1)
+            // writeStringToFileWithNewlines(". ", outFull);
+            outFull << ". ";
+        else
+            // writeStringToFileWithNewlines("=" + to_string(totalWeight) + ". ", outFull);
+            outFull << "=" << totalWeight << ". ";
+
+        // outFull << "\t\tSvoris = " << totalWeight << '.';
+        // outFull << endl;
     }
 
-    outFull << "}. " << endl;
-    outFull << "\t\tKaina = " << totalPrice << '.' << endl;
-    outFull << "\t\tSvoris = " << totalWeight << '.';
     outFull << endl;
 }
 
@@ -186,8 +306,19 @@ void knapsackBacktracking(vector<Item> items, int capacity, vector<int> knapsack
         // printKnapsack(items,knapsack, false);
         if (value > bestValue)
         {
+            totalCombinations = 0;
+            memset(combinations, 0, sizeof(combinations));
             bestValue = value;
             bestKnapsack = knapsack;
+        }
+        if (value == bestValue)
+        {
+            copy(knapsack.begin(), knapsack.end(), combinations[totalCombinations++]);
+            // for (int i = 0; i < 5; i++)
+            // {
+            //     cout << combinations[totalCombinations - 1][i] << ' ';
+            // }
+            // cout << endl;
         }
         return;
     }
@@ -226,8 +357,9 @@ int main()
 {
     string filename;
     cout << "Iveskite failo pavadinima (rasoma su pletiniu gale): ";
-    getline(cin, filename);               // get filename from user
-    ifstream src(filename.c_str());       // open data file
+    getline(cin, filename);         // get filename from user
+    ifstream src(filename.c_str()); // open data file
+    // ifstream src("duom1.txt");
     if (src)
     {
         cout << "Failas " << filename << " nuskaitytas sekmingai." << endl << "Programa vykdoma..." << endl << endl;
@@ -238,17 +370,19 @@ int main()
         return 0;
     }
     // Open output file after checking if the input file exists
-    ofstream outFull("2uzd-03var-protokolas1-Rackauskas-20230329.txt");    // open full output file
-
+    ofstream outFull("2uzd-03var-protokolas3-Rackauskas-20230421.txt"); // open full output file
 
     // Print the header of the output file
-    outFull << "Olen Rackauskas, 1 kursas, 3 grupe, 2 pogrupis." << endl << endl;
+    outFull << "Olen Rackauskas, 1 kursas, 3 grupe, 2 pogrupis." << endl
+            << endl;
     outFull << "1 DALIS. DUOMENYS." << endl;
-    outFull << "2 uzduotis, 3 variantas" << endl << endl;
+    outFull << "2 uzduotis, 3 variantas" << endl
+            << endl;
     outFull << "1.1. SALYGA. ";
-    outFull << "Duota N daiktu, kuriu svoriai s1, s2, ... sN, o kainos k1, k2, ... kN.\nPrograma turi sudaryti daiktu rinkini, kurio kaina butu maksimali, o svoris nevirsytu\nnurodyto svorio S. Vartotojas nurodo faila, is kurio programa iveda daiktu svorius ir kainas, bei svori S." << endl << endl;
+    outFull << "Duota N daiktu, kuriu svoriai s1, s2, ... sN,\no kainos k1, k2, ... kN.Programa turi sudaryti daiktu \nrinkini, kurio kaina butu maksimali, o svoris nevirsytu\nnurodyto svorio S. Vartotojas nurodo faila, is kurio programa \niveda daiktu svorius ir kainas, bei svori S." << endl
+            << endl;
     outFull << "1.2. PRADINE BUSENA." << endl;
-    outFull << "\t1.2.1)Ivesties failas: " << filename << endl;
+    outFull << "\t1.2.1) Ivesties failas: " << filename << '.' << endl;
 
     int N;
     Item item;
@@ -262,14 +396,14 @@ int main()
         items.push_back(item);
     }
     src.close();
-
-    outFull << "\t1.2.2)Daiktu skaicius N: " << N << endl;
-    outFull << "\t1.2.3)Maksimalus daiktu svoris S: " << S << endl;
-    outFull << "\t1.2.4)Daiktu svoriai ir kainos:" << endl;
+    // int combinations[MAX_ITEMS][MAX_ITEMS];
+    outFull << "\t1.2.2) Daiktu skaicius N=" << N << '.' << endl;
+    outFull << "\t1.2.3) Maksimalus daiktu svoris S=" << S << '.' << endl;
+    outFull << "\t1.2.4) Daiktu svoriai ir kainos:" << endl;
 
     // Print out the items (d1. s1 = ... k1 = ...)
     for (int i = 0; i < N; i++)
-        outFull << "\t\td" << i + 1 << ". s" << i+1 << " = " << items[i].weight << ". k" << i+1 << " = " << items[i].value << '.' << endl;
+        outFull << "\t\t\td" << i + 1 << ". s" << i + 1 << " = " << items[i].weight << ". k" << i + 1 << " = " << items[i].value << '.' << endl;
 
     outFull << endl;
 
@@ -281,7 +415,8 @@ int main()
     outFull << "2 DALIS. VYKDYMAS." << endl;
     knapsackBacktracking(items, S, knapsack, 0, bestKnapsack, bestValue, outFull);
 
-    outFull << endl << "3 DALIS. Rezultatas" << endl;
+    outFull << endl
+            << "3 DALIS. Rezultatas" << endl;
 
     int itemCount = 0;
     for (int i = 0; i < bestKnapsack.size(); i++)
@@ -289,16 +424,26 @@ int main()
         if (bestKnapsack[i] == 1)
             itemCount++;
     }
-
-    if(itemCount > 0)
+    // cout << "Kombinacijos: "<< totalCombinations << endl;
+    if (itemCount > 0)
     {
-        outFull << "\t3.1)Daiktu sarasas rastas. Bandymu skaicius: " << steps - 1 << endl;
-        outFull << "\t3.2)Geriausias rastas daiktu rinkinys: ";
+        if (totalCombinations > 1)
+        {
+            outFull << "\t3.1) Daiktu sarasai rasti. Bandymu skaicius=" << steps - 1 << '.' << endl;
+            outFull << "\t3.2) Geriausi rasti daiktu rinkiniai: ";
+        }
+        else
+        {
+            outFull << "\t3.1) Daiktu sarasas rastas. Bandymu skaicius=" << steps - 1 << '.' << endl;
+            outFull << "\t3.2) Geriausias rastas daiktu rinkinys: ";
+        }
         printAnswer(items, bestKnapsack, outFull);
+        outFull << "\t3.3) Maksimalus leidziamas kuprines svoris S=" << S << '.' <<endl;
     }
     else
     {
-        outFull << "\t3.1)Daiktu sarasas nerastas. Bandymu skaicius: " << steps - 1 << endl << "\tNera daiktu, kurie turetu svori mazesni nei " << S << endl;
+        outFull << "\t3.1) Daiktu sarasas nerastas. Bandymu skaicius=" << steps - 1 << '.' << endl
+                << "\tNera daiktu, kurie turetu svori mazesni nei " << S << '.' << endl;
     }
 
     outFull.close();
